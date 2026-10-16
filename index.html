@@ -1,22 +1,1333 @@
 <!DOCTYPE html>
 <html lang="uz">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISSIQLIK LABIRINTI — Fizika o‘yini</title>
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-:root{--bg:#080c18;--panel:#11182a;--muted:#9ba8c2;--white:#f6f8ff;--blue:#68e0ff;--orange:#ff9d62;--purple:#b49aff;--line:rgba(255,255,255,.11)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font-family:Manrope,Arial,sans-serif;min-height:100vh;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(to bottom,black,transparent 90%)}.glow{position:fixed;border-radius:50%;filter:blur(90px);opacity:.16;pointer-events:none}.glow-one{width:300px;height:300px;background:#236cff;top:15%;left:-150px}.glow-two{width:280px;height:280px;background:#ff784a;right:-140px;bottom:0}.topbar{height:76px;padding:0 6.5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:2}.brand{display:flex;align-items:center;gap:10px;color:var(--white);text-decoration:none;font-weight:800;letter-spacing:1.7px;font-family:'Space Grotesk',sans-serif}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--blue);border-radius:10px;color:var(--blue);font-size:23px}.brand-accent{color:var(--blue)}.top-badge{font-size:10px;letter-spacing:1.8px;color:var(--muted);border:1px solid var(--line);padding:9px 13px;border-radius:30px}.shell{width:min(1120px,88%);margin:auto;position:relative;z-index:1}.screen{display:none;min-height:calc(100vh - 125px);padding:50px 0 30px;animation:appear .35s ease}.screen.active{display:block}@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.hero{min-height:calc(100vh - 125px);display:none;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;padding-top:38px}.hero.active{display:grid}.eyebrow{font-size:10px;font-weight:800;letter-spacing:2.3px;color:var(--blue);display:flex;align-items:center;gap:9px}.pulse{width:7px;height:7px;background:var(--blue);border-radius:50%;box-shadow:0 0 15px var(--blue)}h1,h2,h3,p{margin-top:0}h1{font:700 clamp(48px,7vw,82px)/.98 'Space Grotesk',sans-serif;letter-spacing:-4px;margin:25px 0 22px}h1 span{color:var(--blue);text-shadow:0 0 35px #68e0ff25}.hero-text{max-width:470px;color:#aab5cc;line-height:1.8;font-size:14px}.stats-row{display:flex;gap:38px;margin:32px 0}.stats-row div{display:flex;flex-direction:column;gap:5px}.stats-row b{font:700 26px 'Space Grotesk',sans-serif}.stats-row small{color:var(--muted);font-size:10px}.primary-btn{border:0;background:var(--blue);color:#07101d;font-weight:800;letter-spacing:1px;padding:16px 21px;border-radius:9px;display:inline-flex;align-items:center;gap:25px;cursor:pointer;transition:.2s;font-family:inherit;font-size:11px}.primary-btn:hover{transform:translateY(-2px);box-shadow:0 9px 28px #68e0ff25}.primary-btn span{font-size:19px}.hero-art{height:420px;position:relative;display:grid;place-items:center}.orbit{position:absolute;border:1px solid rgba(104,224,255,.25);border-radius:50%;transform:rotate(-25deg)}.orbit-a{width:290px;height:290px}.orbit-b{width:380px;height:210px;transform:rotate(48deg);border-color:#b49aff45}.orbit-c{width:400px;height:130px;transform:rotate(-62deg);border-color:#ff9d6240}.core{width:135px;height:135px;border-radius:38px;display:grid;place-items:center;font-size:63px;background:radial-gradient(circle at 30% 25%,#334c74,#151d31 65%);border:1px solid #68e0ff55;box-shadow:0 0 70px #4acbff25, inset 0 0 25px #68e0ff15;z-index:1}.particle{position:absolute;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;color:var(--blue);background:#172239;border:1px solid #68e0ff60;font-weight:800}.p1{top:57px;left:44%}.p2{top:120px;right:12%;font-size:25px}.p3{bottom:75px;left:17%;color:var(--orange);border-color:#ff9d6260}.p4{bottom:66px;right:24%;font-size:25px;color:var(--purple);border-color:#b49aff60}.p5{top:42%;left:5%}.floating-card{position:absolute;background:#131d30dd;border:1px solid var(--line);padding:12px 15px;border-radius:10px;backdrop-filter:blur(12px);display:flex;flex-direction:column;gap:6px;box-shadow:0 10px 30px #0003}.floating-card span{font-size:8px;letter-spacing:1.5px;color:var(--muted)}.floating-card b{font-size:11px}.card-top{top:50px;right:0}.card-top b{color:#82efba}.card-bottom{bottom:38px;left:0}.card-bottom b{color:var(--blue);font-size:10px}.hero-footer{grid-column:1/-1;display:flex;justify-content:space-between;color:#65718b;font-size:9px;letter-spacing:1.3px;border-top:1px solid var(--line);padding-top:17px;margin-top:10px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px}.section-head h2{font:700 clamp(25px,4vw,38px) 'Space Grotesk',sans-serif;margin:12px 0 0;letter-spacing:-1px}.ghost-btn{background:transparent;border:1px solid var(--line);color:#b9c5dc;padding:12px 15px;border-radius:8px;font-size:10px;letter-spacing:.7px;cursor:pointer;font-family:inherit}.ghost-btn:hover{border-color:var(--blue);color:var(--blue)}.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.mode-card{text-align:left;min-height:290px;padding:24px 22px 20px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(150deg,#172139,#101625 75%);color:var(--white);cursor:pointer;position:relative;overflow:hidden;transition:.25s;font-family:inherit}.mode-card:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-90px;top:-95px;opacity:.12;background:currentColor}.mode-card:hover{transform:translateY(-5px);border-color:currentColor}.mode-blue{color:var(--blue)}.mode-orange{color:var(--orange)}.mode-purple{color:var(--purple)}.mode-number{position:absolute;right:22px;top:22px;font:600 12px 'Space Grotesk';opacity:.65}.mode-emoji{font-size:31px;display:block;margin:18px 0 20px}.mode-card h3{font:700 23px 'Space Grotesk',sans-serif;color:var(--white);margin-bottom:10px}.mode-card p{color:#9ba8c2;font-size:12px;line-height:1.8;min-height:66px}.mode-bottom{display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:1.2px;font-weight:800;margin-top:23px}.mode-bottom b{font-size:19px}.tip-box{margin-top:22px;padding:15px 18px;display:flex;gap:13px;align-items:center;background:#10192a;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:11px}.tip-box p{margin:0;line-height:1.6}.tip-box b{color:#e7edff}.quiz-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.quiz-label{font-size:10px;letter-spacing:1.7px;color:var(--blue);font-weight:800}.score-pill{border:1px solid #ffce7555;color:#ffce75;padding:9px 13px;border-radius:30px;font-size:11px}.progress-wrap{margin:27px 0 22px}.progress-meta{display:flex;justify-content:space-between;color:#8492ae;font-size:9px;letter-spacing:1px;margin-bottom:9px}.progress-track{height:5px;background:#202a3d;border-radius:8px;overflow:hidden}.progress-track div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--purple));transition:width .3s}.quiz-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:18px}.question-panel,.side-panel{border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#141d30,#0e1423);padding:27px}.topic-chip{display:inline-block;color:var(--blue);background:#68e0ff13;border:1px solid #68e0ff30;border-radius:5px;padding:7px 9px;font-size:9px;letter-spacing:1.1px;font-weight:800}.question-panel h2{font:600 clamp(20px,3vw,28px)/1.4 'Space Grotesk',sans-serif;letter-spacing:-.5px;margin:22px 0}.formula-box{border-left:3px solid var(--orange);padding:11px 14px;margin-bottom:19px;background:#ff9d620e;color:#ffcb9e;font:500 13px 'Space Grotesk';line-height:1.6}.hidden{display:none!important}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.answer-btn{display:flex;align-items:center;text-align:left;gap:12px;padding:14px 13px;border:1px solid var(--line);background:#111a2b;border-radius:9px;color:#dce5fa;font-family:inherit;cursor:pointer;font-size:12px;line-height:1.5;min-height:57px;transition:.18s}.answer-letter{display:grid;place-items:center;flex:0 0 26px;height:26px;border:1px solid #45516a;border-radius:7px;color:#9caac5;font-size:10px;font-weight:800}.answer-btn:hover:not(:disabled){border-color:var(--blue);background:#68e0ff0c}.answer-btn.correct{border-color:#54dda2;background:#54dda211}.answer-btn.correct .answer-letter{border-color:#54dda2;color:#54dda2}.answer-btn.wrong{border-color:#ff7c83;background:#ff7c830d}.answer-btn.wrong .answer-letter{border-color:#ff7c83;color:#ff7c83}.answer-btn:disabled{cursor:default}.feedback{margin-top:15px;padding:13px 14px;border-radius:8px;background:#54dda20d;border:1px solid #54dda233;color:#aeeed1;font-size:11px;line-height:1.7}.feedback.bad{background:#ff7c830c;border-color:#ff7c8333;color:#ffc2c5}.next-btn{margin-top:18px;width:100%;justify-content:space-between}.next-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}.side-panel{padding:24px 20px}.side-icon{font-size:29px;margin-bottom:16px}.side-panel h3{font:600 18px 'Space Grotesk',sans-serif;margin-bottom:9px}.side-panel>p{color:var(--muted);font-size:11px;line-height:1.7}.side-divider{height:1px;background:var(--line);margin:20px 0}.mini-stat{display:flex;align-items:center;justify-content:space-between;margin:15px 0}.mini-stat span{font-size:8px;letter-spacing:1px;color:#8f9bb4}.mini-stat b{font:700 20px 'Space Grotesk',sans-serif}.side-tip{margin-top:26px;padding:13px;background:#68e0ff0b;border:1px solid #68e0ff20;border-radius:8px}.side-tip span{font-size:8px;letter-spacing:1.2px;color:var(--blue);font-weight:800}.side-tip p{font-size:10px;line-height:1.7;color:#aab8d1;margin:8px 0 0}.result-screen{text-align:center;display:none;align-items:center;flex-direction:column;justify-content:center}.result-screen.active{display:flex}.result-orb{width:100px;height:100px;display:grid;place-items:center;font-size:48px;border-radius:30px;border:1px solid #ffce7555;background:#ffce7510;box-shadow:0 0 60px #ffce7510;margin-bottom:24px}.result-screen h2{font:700 clamp(30px,5vw,48px) 'Space Grotesk',sans-serif;margin:14px 0}.result-screen>p{color:var(--muted);font-size:13px}.result-stats{display:flex;gap:0;margin:24px 0 30px;border:1px solid var(--line);border-radius:13px;overflow:hidden}.result-stats div{min-width:140px;padding:20px 25px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:9px}.result-stats div:last-child{border:0}.result-stats small{font-size:8px;letter-spacing:1px;color:var(--muted)}.result-stats b{font:700 25px 'Space Grotesk',sans-serif;color:var(--blue)}.result-actions{display:flex;gap:12px}.footer{border-top:1px solid var(--line);padding:18px 0 23px;display:flex;justify-content:space-between;color:#5d6a84;font-size:8px;letter-spacing:1.4px}.footer span:first-child{color:#9ba8c2;font-weight:800}@media(max-width:800px){.shell{width:90%}.hero{grid-template-columns:1fr;padding-top:48px}.hero-art{height:310px;grid-row:1}.hero-copy{grid-row:2}.hero-art .orbit-a{width:220px;height:220px}.orbit-b{width:290px;height:160px}.orbit-c{width:300px;height:100px}.core{width:100px;height:100px;font-size:47px}.card-top{right:4%;top:20px}.card-bottom{left:4%;bottom:15px}.hero-footer{margin-top:32px}.mode-grid{grid-template-columns:1fr}.mode-card{min-height:240px}.mode-card p{min-height:auto}.quiz-layout{grid-template-columns:1fr}.side-panel{display:grid;grid-template-columns:50px 1fr 1fr;gap:8px;align-items:center}.side-icon{grid-row:1/3;margin:0}.side-panel h3{margin:0}.side-panel>p{grid-column:2/4;margin:0}.side-divider,.side-tip{display:none}.mini-stat{margin:5px 0}.section-head{align-items:flex-start;gap:15px}.section-head h2{max-width:420px}}@media(max-width:520px){.topbar{padding:0 5%;height:65px}.top-badge{font-size:8px;letter-spacing:.7px;padding:8px}.brand{font-size:12px}.shell{width:91%}.screen{padding-top:30px}.hero{padding-top:20px;gap:0}.hero-art{height:260px}.hero-text{font-size:13px}.stats-row{gap:25px}.stats-row b{font-size:22px}.hero-footer{font-size:7px;gap:10px}.section-head{flex-direction:column}.mode-card{padding:20px}.quiz-top{flex-wrap:wrap}.quiz-label{order:3;width:100%;text-align:center}.question-panel{padding:20px 15px}.answers{grid-template-columns:1fr}.answer-btn{min-height:50px}.side-panel{grid-template-columns:38px 1fr 1fr;padding:17px 13px}.side-panel h3{font-size:15px}.side-panel>p{font-size:10px}.mini-stat span{font-size:7px}.mini-stat b{font-size:17px}.result-stats{width:100%}.result-stats div{min-width:0;flex:1;padding:15px 8px}.result-stats small{font-size:7px}.result-stats b{font-size:21px}.result-actions{flex-direction:column;width:100%}.result-actions button{justify-content:center}.footer{font-size:7px;gap:12px}.footer span:last-child{text-align:right}}
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* V2: duel, timer, sound and local leaderboard */
-.mode-green{color:#72efbd}.quiz-tools{display:flex;align-items:center;gap:9px}.timer-pill{border:1px solid #ff9d6266;background:#ff9d6210;color:#ffbf94;border-radius:30px;padding:9px 12px;font-size:11px;font-weight:800;white-space:nowrap}.timer-pill.urgent{color:#ff7c83;border-color:#ff7c83;animation:timerPulse .65s infinite alternate}@keyframes timerPulse{to{box-shadow:0 0 18px #ff7c8355}}.sound-btn{padding:9px 11px}.team-bar{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:12px 15px;border:1px solid #72efbd40;background:#72efbd0b;border-radius:10px;color:#d9fced;font-size:11px;font-weight:800;letter-spacing:.5px}.team-bar span:last-child{color:#b9c5dc}.team-result{margin:0 auto 20px;padding:13px 20px;border:1px solid #72efbd55;border-radius:10px;color:#bfffe0;background:#72efbd0b;font-weight:800}.duel-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.duel-team{border:1px solid var(--line);border-radius:12px;padding:16px;background:#10192a;min-width:0}.duel-team.blue{border-color:#68e0ff66}.duel-team.orange{border-color:#ff9d6266}.duel-team h3{font:700 16px 'Space Grotesk',sans-serif;margin:0 0 12px;overflow-wrap:anywhere}.duel-team.blue h3{color:var(--blue)}.duel-team.orange h3{color:var(--orange)}.duel-team .answers{grid-template-columns:1fr}.duel-team .answer-btn{min-height:45px;padding:10px;font-size:11px}.duel-status{font-size:10px;color:var(--muted);margin:10px 0 0;min-height:16px}.duel-feedback{font-size:11px;line-height:1.6;margin-top:10px;color:#bfffe0}.duel-feedback.bad{color:#ffc2c5}@media(max-width:650px){.duel-grid{grid-template-columns:1fr}.duel-team .answers{grid-template-columns:1fr 1fr}}.leaderboard{width:min(520px,100%);margin:0 auto 24px;text-align:left;background:#111a2b;border:1px solid var(--line);border-radius:12px;padding:17px 20px}.leaderboard h3{font-size:11px;letter-spacing:1.4px;color:#ffce75;margin:0 0 12px}.leaderboard ol{margin:0;padding-left:23px;color:#cbd5ea;font-size:11px;line-height:1.9}.leaderboard li:first-child{color:#ffce75}.result-screen{padding-bottom:40px}@media(max-width:520px){.quiz-tools{width:100%;justify-content:space-between;gap:6px}.team-bar{font-size:9px}.timer-pill,.sound-btn{font-size:9px;padding:8px}.leaderboard{padding:14px}}
+    :root {
+      --bg: #080c18;
+      --panel: #11182a;
+      --muted: #9ba8c2;
+      --white: #f6f8ff;
+      --blue: #68e0ff;
+      --orange: #ff9d62;
+      --purple: #b49aff;
+      --line: rgba(255, 255, 255, .11)
+    }
 
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Manrope, Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%)
+    }
+
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .16;
+      pointer-events: none
+    }
+
+    .glow-one {
+      width: 300px;
+      height: 300px;
+      background: #236cff;
+      top: 15%;
+      left: -150px
+    }
+
+    .glow-two {
+      width: 280px;
+      height: 280px;
+      background: #ff784a;
+      right: -140px;
+      bottom: 0
+    }
+
+    .topbar {
+      height: 76px;
+      padding: 0 6.5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      z-index: 2
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      font-family: 'Space Grotesk', sans-serif
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--blue);
+      border-radius: 10px;
+      color: var(--blue);
+      font-size: 23px
+    }
+
+    .brand-accent {
+      color: var(--blue)
+    }
+
+    .top-badge {
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 9px 13px;
+      border-radius: 30px
+    }
+
+    .shell {
+      width: min(1120px, 88%);
+      margin: auto;
+      position: relative;
+      z-index: 1
+    }
+
+    .screen {
+      display: none;
+      min-height: calc(100vh - 125px);
+      padding: 50px 0 30px;
+      animation: appear .35s ease
+    }
+
+    .screen.active {
+      display: block
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .hero {
+      min-height: calc(100vh - 125px);
+      display: none;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 30px;
+      padding-top: 38px
+    }
+
+    .hero.active {
+      display: grid
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.3px;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .pulse {
+      width: 7px;
+      height: 7px;
+      background: var(--blue);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--blue)
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0
+    }
+
+    h1 {
+      font: 700 clamp(48px, 7vw, 82px)/.98 'Space Grotesk', sans-serif;
+      letter-spacing: -4px;
+      margin: 25px 0 22px
+    }
+
+    h1 span {
+      color: var(--blue);
+      text-shadow: 0 0 35px #68e0ff25
+    }
+
+    .hero-text {
+      max-width: 470px;
+      color: #aab5cc;
+      line-height: 1.8;
+      font-size: 14px
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 38px;
+      margin: 32px 0
+    }
+
+    .stats-row div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px
+    }
+
+    .stats-row b {
+      font: 700 26px 'Space Grotesk', sans-serif
+    }
+
+    .stats-row small {
+      color: var(--muted);
+      font-size: 10px
+    }
+
+    .primary-btn {
+      border: 0;
+      background: var(--blue);
+      color: #07101d;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 16px 21px;
+      border-radius: 9px;
+      display: inline-flex;
+      align-items: center;
+      gap: 25px;
+      cursor: pointer;
+      transition: .2s;
+      font-family: inherit;
+      font-size: 11px
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 9px 28px #68e0ff25
+    }
+
+    .primary-btn span {
+      font-size: 19px
+    }
+
+    .hero-art {
+      height: 420px;
+      position: relative;
+      display: grid;
+      place-items: center
+    }
+
+    .orbit {
+      position: absolute;
+      border: 1px solid rgba(104, 224, 255, .25);
+      border-radius: 50%;
+      transform: rotate(-25deg)
+    }
+
+    .orbit-a {
+      width: 290px;
+      height: 290px
+    }
+
+    .orbit-b {
+      width: 380px;
+      height: 210px;
+      transform: rotate(48deg);
+      border-color: #b49aff45
+    }
+
+    .orbit-c {
+      width: 400px;
+      height: 130px;
+      transform: rotate(-62deg);
+      border-color: #ff9d6240
+    }
+
+    .core {
+      width: 135px;
+      height: 135px;
+      border-radius: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 63px;
+      background: radial-gradient(circle at 30% 25%, #334c74, #151d31 65%);
+      border: 1px solid #68e0ff55;
+      box-shadow: 0 0 70px #4acbff25, inset 0 0 25px #68e0ff15;
+      z-index: 1
+    }
+
+    .particle {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      color: var(--blue);
+      background: #172239;
+      border: 1px solid #68e0ff60;
+      font-weight: 800
+    }
+
+    .p1 {
+      top: 57px;
+      left: 44%
+    }
+
+    .p2 {
+      top: 120px;
+      right: 12%;
+      font-size: 25px
+    }
+
+    .p3 {
+      bottom: 75px;
+      left: 17%;
+      color: var(--orange);
+      border-color: #ff9d6260
+    }
+
+    .p4 {
+      bottom: 66px;
+      right: 24%;
+      font-size: 25px;
+      color: var(--purple);
+      border-color: #b49aff60
+    }
+
+    .p5 {
+      top: 42%;
+      left: 5%
+    }
+
+    .floating-card {
+      position: absolute;
+      background: #131d30dd;
+      border: 1px solid var(--line);
+      padding: 12px 15px;
+      border-radius: 10px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 10px 30px #0003
+    }
+
+    .floating-card span {
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      color: var(--muted)
+    }
+
+    .floating-card b {
+      font-size: 11px
+    }
+
+    .card-top {
+      top: 50px;
+      right: 0
+    }
+
+    .card-top b {
+      color: #82efba
+    }
+
+    .card-bottom {
+      bottom: 38px;
+      left: 0
+    }
+
+    .card-bottom b {
+      color: var(--blue);
+      font-size: 10px
+    }
+
+    .hero-footer {
+      grid-column: 1/-1;
+      display: flex;
+      justify-content: space-between;
+      color: #65718b;
+      font-size: 9px;
+      letter-spacing: 1.3px;
+      border-top: 1px solid var(--line);
+      padding-top: 17px;
+      margin-top: 10px
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 34px
+    }
+
+    .section-head h2 {
+      font: 700 clamp(25px, 4vw, 38px) 'Space Grotesk', sans-serif;
+      margin: 12px 0 0;
+      letter-spacing: -1px
+    }
+
+    .ghost-btn {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: #b9c5dc;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 10px;
+      letter-spacing: .7px;
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    .ghost-btn:hover {
+      border-color: var(--blue);
+      color: var(--blue)
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px
+    }
+
+    .mode-card {
+      text-align: left;
+      min-height: 290px;
+      padding: 24px 22px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(150deg, #172139, #101625 75%);
+      color: var(--white);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: .25s;
+      font-family: inherit
+    }
+
+    .mode-card:after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      right: -90px;
+      top: -95px;
+      opacity: .12;
+      background: currentColor
+    }
+
+    .mode-card:hover {
+      transform: translateY(-5px);
+      border-color: currentColor
+    }
+
+    .mode-blue {
+      color: var(--blue)
+    }
+
+    .mode-orange {
+      color: var(--orange)
+    }
+
+    .mode-purple {
+      color: var(--purple)
+    }
+
+    .mode-number {
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      font: 600 12px 'Space Grotesk';
+      opacity: .65
+    }
+
+    .mode-emoji {
+      font-size: 31px;
+      display: block;
+      margin: 18px 0 20px
+    }
+
+    .mode-card h3 {
+      font: 700 23px 'Space Grotesk', sans-serif;
+      color: var(--white);
+      margin-bottom: 10px
+    }
+
+    .mode-card p {
+      color: #9ba8c2;
+      font-size: 12px;
+      line-height: 1.8;
+      min-height: 66px
+    }
+
+    .mode-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      letter-spacing: 1.2px;
+      font-weight: 800;
+      margin-top: 23px
+    }
+
+    .mode-bottom b {
+      font-size: 19px
+    }
+
+    .tip-box {
+      margin-top: 22px;
+      padding: 15px 18px;
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      background: #10192a;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    .tip-box p {
+      margin: 0;
+      line-height: 1.6
+    }
+
+    .tip-box b {
+      color: #e7edff
+    }
+
+    .quiz-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .quiz-label {
+      font-size: 10px;
+      letter-spacing: 1.7px;
+      color: var(--blue);
+      font-weight: 800
+    }
+
+    .score-pill {
+      border: 1px solid #ffce7555;
+      color: #ffce75;
+      padding: 9px 13px;
+      border-radius: 30px;
+      font-size: 11px
+    }
+
+    .progress-wrap {
+      margin: 27px 0 22px
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #8492ae;
+      font-size: 9px;
+      letter-spacing: 1px;
+      margin-bottom: 9px
+    }
+
+    .progress-track {
+      height: 5px;
+      background: #202a3d;
+      border-radius: 8px;
+      overflow: hidden
+    }
+
+    .progress-track div {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      transition: width .3s
+    }
+
+    .quiz-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 18px
+    }
+
+    .question-panel,
+    .side-panel {
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: linear-gradient(145deg, #141d30, #0e1423);
+      padding: 27px
+    }
+
+    .topic-chip {
+      display: inline-block;
+      color: var(--blue);
+      background: #68e0ff13;
+      border: 1px solid #68e0ff30;
+      border-radius: 5px;
+      padding: 7px 9px;
+      font-size: 9px;
+      letter-spacing: 1.1px;
+      font-weight: 800
+    }
+
+    .question-panel h2 {
+      font: 600 clamp(20px, 3vw, 28px)/1.4 'Space Grotesk', sans-serif;
+      letter-spacing: -.5px;
+      margin: 22px 0
+    }
+
+    .formula-box {
+      border-left: 3px solid var(--orange);
+      padding: 11px 14px;
+      margin-bottom: 19px;
+      background: #ff9d620e;
+      color: #ffcb9e;
+      font: 500 13px 'Space Grotesk';
+      line-height: 1.6
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    .answers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px
+    }
+
+    .answer-btn {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      gap: 12px;
+      padding: 14px 13px;
+      border: 1px solid var(--line);
+      background: #111a2b;
+      border-radius: 9px;
+      color: #dce5fa;
+      font-family: inherit;
+      cursor: pointer;
+      font-size: 12px;
+      line-height: 1.5;
+      min-height: 57px;
+      transition: .18s
+    }
+
+    .answer-letter {
+      display: grid;
+      place-items: center;
+      flex: 0 0 26px;
+      height: 26px;
+      border: 1px solid #45516a;
+      border-radius: 7px;
+      color: #9caac5;
+      font-size: 10px;
+      font-weight: 800
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      border-color: var(--blue);
+      background: #68e0ff0c
+    }
+
+    .answer-btn.correct {
+      border-color: #54dda2;
+      background: #54dda211
+    }
+
+    .answer-btn.correct .answer-letter {
+      border-color: #54dda2;
+      color: #54dda2
+    }
+
+    .answer-btn.wrong {
+      border-color: #ff7c83;
+      background: #ff7c830d
+    }
+
+    .answer-btn.wrong .answer-letter {
+      border-color: #ff7c83;
+      color: #ff7c83
+    }
+
+    .answer-btn:disabled {
+      cursor: default
+    }
+
+    .feedback {
+      margin-top: 15px;
+      padding: 13px 14px;
+      border-radius: 8px;
+      background: #54dda20d;
+      border: 1px solid #54dda233;
+      color: #aeeed1;
+      font-size: 11px;
+      line-height: 1.7
+    }
+
+    .feedback.bad {
+      background: #ff7c830c;
+      border-color: #ff7c8333;
+      color: #ffc2c5
+    }
+
+    .next-btn {
+      margin-top: 18px;
+      width: 100%;
+      justify-content: space-between
+    }
+
+    .next-btn:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none
+    }
+
+    .side-panel {
+      padding: 24px 20px
+    }
+
+    .side-icon {
+      font-size: 29px;
+      margin-bottom: 16px
+    }
+
+    .side-panel h3 {
+      font: 600 18px 'Space Grotesk', sans-serif;
+      margin-bottom: 9px
+    }
+
+    .side-panel>p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7
+    }
+
+    .side-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 20px 0
+    }
+
+    .mini-stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 15px 0
+    }
+
+    .mini-stat span {
+      font-size: 8px;
+      letter-spacing: 1px;
+      color: #8f9bb4
+    }
+
+    .mini-stat b {
+      font: 700 20px 'Space Grotesk', sans-serif
+    }
+
+    .side-tip {
+      margin-top: 26px;
+      padding: 13px;
+      background: #68e0ff0b;
+      border: 1px solid #68e0ff20;
+      border-radius: 8px
+    }
+
+    .side-tip span {
+      font-size: 8px;
+      letter-spacing: 1.2px;
+      color: var(--blue);
+      font-weight: 800
+    }
+
+    .side-tip p {
+      font-size: 10px;
+      line-height: 1.7;
+      color: #aab8d1;
+      margin: 8px 0 0
+    }
+
+    .result-screen {
+      text-align: center;
+      display: none;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .result-screen.active {
+      display: flex
+    }
+
+    .result-orb {
+      width: 100px;
+      height: 100px;
+      display: grid;
+      place-items: center;
+      font-size: 48px;
+      border-radius: 30px;
+      border: 1px solid #ffce7555;
+      background: #ffce7510;
+      box-shadow: 0 0 60px #ffce7510;
+      margin-bottom: 24px
+    }
+
+    .result-screen h2 {
+      font: 700 clamp(30px, 5vw, 48px) 'Space Grotesk', sans-serif;
+      margin: 14px 0
+    }
+
+    .result-screen>p {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .result-stats {
+      display: flex;
+      gap: 0;
+      margin: 24px 0 30px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      overflow: hidden
+    }
+
+    .result-stats div {
+      min-width: 140px;
+      padding: 20px 25px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 9px
+    }
+
+    .result-stats div:last-child {
+      border: 0
+    }
+
+    .result-stats small {
+      font-size: 8px;
+      letter-spacing: 1px;
+      color: var(--muted)
+    }
+
+    .result-stats b {
+      font: 700 25px 'Space Grotesk', sans-serif;
+      color: var(--blue)
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 12px
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 18px 0 23px;
+      display: flex;
+      justify-content: space-between;
+      color: #5d6a84;
+      font-size: 8px;
+      letter-spacing: 1.4px
+    }
+
+    .footer span:first-child {
+      color: #9ba8c2;
+      font-weight: 800
+    }
+
+    @media(max-width:800px) {
+      .shell {
+        width: 90%
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 48px
+      }
+
+      .hero-art {
+        height: 310px;
+        grid-row: 1
+      }
+
+      .hero-copy {
+        grid-row: 2
+      }
+
+      .hero-art .orbit-a {
+        width: 220px;
+        height: 220px
+      }
+
+      .orbit-b {
+        width: 290px;
+        height: 160px
+      }
+
+      .orbit-c {
+        width: 300px;
+        height: 100px
+      }
+
+      .core {
+        width: 100px;
+        height: 100px;
+        font-size: 47px
+      }
+
+      .card-top {
+        right: 4%;
+        top: 20px
+      }
+
+      .card-bottom {
+        left: 4%;
+        bottom: 15px
+      }
+
+      .hero-footer {
+        margin-top: 32px
+      }
+
+      .mode-grid {
+        grid-template-columns: 1fr
+      }
+
+      .mode-card {
+        min-height: 240px
+      }
+
+      .mode-card p {
+        min-height: auto
+      }
+
+      .quiz-layout {
+        grid-template-columns: 1fr
+      }
+
+      .side-panel {
+        display: grid;
+        grid-template-columns: 50px 1fr 1fr;
+        gap: 8px;
+        align-items: center
+      }
+
+      .side-icon {
+        grid-row: 1/3;
+        margin: 0
+      }
+
+      .side-panel h3 {
+        margin: 0
+      }
+
+      .side-panel>p {
+        grid-column: 2/4;
+        margin: 0
+      }
+
+      .side-divider,
+      .side-tip {
+        display: none
+      }
+
+      .mini-stat {
+        margin: 5px 0
+      }
+
+      .section-head {
+        align-items: flex-start;
+        gap: 15px
+      }
+
+      .section-head h2 {
+        max-width: 420px
+      }
+    }
+
+    @media(max-width:520px) {
+      .topbar {
+        padding: 0 5%;
+        height: 65px
+      }
+
+      .top-badge {
+        font-size: 8px;
+        letter-spacing: .7px;
+        padding: 8px
+      }
+
+      .brand {
+        font-size: 12px
+      }
+
+      .shell {
+        width: 91%
+      }
+
+      .screen {
+        padding-top: 30px
+      }
+
+      .hero {
+        padding-top: 20px;
+        gap: 0
+      }
+
+      .hero-art {
+        height: 260px
+      }
+
+      .hero-text {
+        font-size: 13px
+      }
+
+      .stats-row {
+        gap: 25px
+      }
+
+      .stats-row b {
+        font-size: 22px
+      }
+
+      .hero-footer {
+        font-size: 7px;
+        gap: 10px
+      }
+
+      .section-head {
+        flex-direction: column
+      }
+
+      .mode-card {
+        padding: 20px
+      }
+
+      .quiz-top {
+        flex-wrap: wrap
+      }
+
+      .quiz-label {
+        order: 3;
+        width: 100%;
+        text-align: center
+      }
+
+      .question-panel {
+        padding: 20px 15px
+      }
+
+      .answers {
+        grid-template-columns: 1fr
+      }
+
+      .answer-btn {
+        min-height: 50px
+      }
+
+      .side-panel {
+        grid-template-columns: 38px 1fr 1fr;
+        padding: 17px 13px
+      }
+
+      .side-panel h3 {
+        font-size: 15px
+      }
+
+      .side-panel>p {
+        font-size: 10px
+      }
+
+      .mini-stat span {
+        font-size: 7px
+      }
+
+      .mini-stat b {
+        font-size: 17px
+      }
+
+      .result-stats {
+        width: 100%
+      }
+
+      .result-stats div {
+        min-width: 0;
+        flex: 1;
+        padding: 15px 8px
+      }
+
+      .result-stats small {
+        font-size: 7px
+      }
+
+      .result-stats b {
+        font-size: 21px
+      }
+
+      .result-actions {
+        flex-direction: column;
+        width: 100%
+      }
+
+      .result-actions button {
+        justify-content: center
+      }
+
+      .footer {
+        font-size: 7px;
+        gap: 12px
+      }
+
+      .footer span:last-child {
+        text-align: right
+      }
+    }
+
+    /* V2: duel, timer, sound and local leaderboard */
+    .mode-green {
+      color: #72efbd
+    }
+
+    .quiz-tools {
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .timer-pill {
+      border: 1px solid #ff9d6266;
+      background: #ff9d6210;
+      color: #ffbf94;
+      border-radius: 30px;
+      padding: 9px 12px;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap
+    }
+
+    .timer-pill.urgent {
+      color: #ff7c83;
+      border-color: #ff7c83;
+      animation: timerPulse .65s infinite alternate
+    }
+
+    @keyframes timerPulse {
+      to {
+        box-shadow: 0 0 18px #ff7c8355
+      }
+    }
+
+    .sound-btn {
+      padding: 9px 11px
+    }
+
+    .team-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding: 12px 15px;
+      border: 1px solid #72efbd40;
+      background: #72efbd0b;
+      border-radius: 10px;
+      color: #d9fced;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .5px
+    }
+
+    .team-bar span:last-child {
+      color: #b9c5dc
+    }
+
+    .team-result {
+      margin: 0 auto 20px;
+      padding: 13px 20px;
+      border: 1px solid #72efbd55;
+      border-radius: 10px;
+      color: #bfffe0;
+      background: #72efbd0b;
+      font-weight: 800
+    }
+
+    .duel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px
+    }
+
+    .duel-team {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      background: #10192a;
+      min-width: 0
+    }
+
+    .duel-team.blue {
+      border-color: #68e0ff66
+    }
+
+    .duel-team.orange {
+      border-color: #ff9d6266
+    }
+
+    .duel-team h3 {
+      font: 700 16px 'Space Grotesk', sans-serif;
+      margin: 0 0 12px;
+      overflow-wrap: anywhere
+    }
+
+    .duel-team.blue h3 {
+      color: var(--blue)
+    }
+
+    .duel-team.orange h3 {
+      color: var(--orange)
+    }
+
+    .duel-team .answers {
+      grid-template-columns: 1fr
+    }
+
+    .duel-team .answer-btn {
+      min-height: 45px;
+      padding: 10px;
+      font-size: 11px
+    }
+
+    .duel-status {
+      font-size: 10px;
+      color: var(--muted);
+      margin: 10px 0 0;
+      min-height: 16px
+    }
+
+    .duel-feedback {
+      font-size: 11px;
+      line-height: 1.6;
+      margin-top: 10px;
+      color: #bfffe0
+    }
+
+    .duel-feedback.bad {
+      color: #ffc2c5
+    }
+
+    @media(max-width:650px) {
+      .duel-grid {
+        grid-template-columns: 1fr
+      }
+
+      .duel-team .answers {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .leaderboard {
+      width: min(520px, 100%);
+      margin: 0 auto 24px;
+      text-align: left;
+      background: #111a2b;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 17px 20px
+    }
+
+    .leaderboard h3 {
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      color: #ffce75;
+      margin: 0 0 12px
+    }
+
+    .leaderboard ol {
+      margin: 0;
+      padding-left: 23px;
+      color: #cbd5ea;
+      font-size: 11px;
+      line-height: 1.9
+    }
+
+    .leaderboard li:first-child {
+      color: #ffce75
+    }
+
+    .result-screen {
+      padding-bottom: 40px
+    }
+
+    @media(max-width:520px) {
+      .quiz-tools {
+        width: 100%;
+        justify-content: space-between;
+        gap: 6px
+      }
+
+      .team-bar {
+        font-size: 9px
+      }
+
+      .timer-pill,
+      .sound-btn {
+        font-size: 9px;
+        padding: 8px
+      }
+
+      .leaderboard {
+        padding: 14px
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
   <header class="topbar">
-    <a class="brand" href="#"><span class="brand-icon">⚛</span><span>FIZIKA<span class="brand-accent">LAB</span></span></a>
+    <a class="brand" href="#"><span class="brand-icon">⚛</span><span>FIZIKA<span
+          class="brand-accent">LAB</span></span></a>
     <div class="top-badge">8-SINF • INTERAKTIV SHOU</div>
   </header>
 
@@ -25,125 +1336,248 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="pulse"></span> TAJRIBA BOSHLANMOQDA</div>
         <h1>ISSIQLIK<br /><span>LABIRINTI</span></h1>
-        <p class="hero-text">Zarrachalar olamiga sayohat qil! Fizika sirlarini och, issiqlik sinovlaridan o‘t va laboratoriya darajangni oshir.</p>
-        <div class="stats-row"><div><b>30+</b><small>nazariy savol</small></div><div><b>15</b><small>masalali test</small></div><div><b>3</b><small>o‘yin rejimi</small></div></div>
+        <p class="hero-text">Zarrachalar olamiga sayohat qil! Fizika sirlarini och, issiqlik sinovlaridan o‘t va
+          laboratoriya darajangni oshir.</p>
+        <div class="stats-row">
+          <div><b>30+</b><small>nazariy savol</small></div>
+          <div><b>15</b><small>masalali test</small></div>
+          <div><b>3</b><small>o‘yin rejimi</small></div>
+        </div>
         <button class="primary-btn" id="startBtn">LABORATORIYAGA KIRISH <span>↗</span></button>
       </div>
       <div class="hero-art" aria-hidden="true">
-        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div>
-        <div class="core">🔥</div><div class="particle p1">＋</div><div class="particle p2">•</div><div class="particle p3">＋</div><div class="particle p4">•</div><div class="particle p5">＋</div>
-        <div class="floating-card card-top"><span>ENERGIYA</span><b>↑ 98%</b></div><div class="floating-card card-bottom"><span>ZARRACHALAR</span><b>DOIM HARAKATDA</b></div>
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="orbit orbit-c"></div>
+        <div class="core">🔥</div>
+        <div class="particle p1">＋</div>
+        <div class="particle p2">•</div>
+        <div class="particle p3">＋</div>
+        <div class="particle p4">•</div>
+        <div class="particle p5">＋</div>
+        <div class="floating-card card-top"><span>ENERGIYA</span><b>↑ 98%</b></div>
+        <div class="floating-card card-bottom"><span>ZARRACHALAR</span><b>DOIM HARAKATDA</b></div>
       </div>
       <div class="hero-footer"><span>01 / BILIMNI SINOVDAN O‘TKAZ</span><span>SCROLL QILISH SHART EMAS ↓</span></div>
     </section>
 
     <section id="modes" class="screen">
-      <div class="section-head"><div><div class="eyebrow">O‘YIN REJIMINI TANLA</div><h2>Qaysi sinovga tayyorsan?</h2></div><button class="ghost-btn" id="backHome">← Bosh sahifa</button></div>
-      <div class="mode-grid">
-        <button class="mode-card mode-blue" data-mode="all"><span class="mode-number">01</span><span class="mode-emoji">🧠</span><h3>Bilim portali</h3><p>Modda holatlari, kinetik model, Broun harakati, temperatura va gaz qonunlari.</p><span class="mode-bottom">NAZARIY SAVOLLAR <b>→</b></span></button>
-        <button class="mode-card mode-orange" data-mode="heat"><span class="mode-number">02</span><span class="mode-emoji">🌡️</span><h3>Issiqlik ustasi</h3><p>Issiqlikdan kengayish bo‘yicha 15 ta hisoblash masalasi. Formulani qo‘llab ko‘r!</p><span class="mode-bottom">15 TA MASALA <b>→</b></span></button>
-        <button class="mode-card mode-purple" data-mode="mix"><span class="mode-number">03</span><span class="mode-emoji">⚡</span><h3>Ekstremal aralashma</h3><p>Har xil mavzulardan aralash savollar. Tezlik va aniqlik muhim!</p><span class="mode-bottom">ARALASH CHALLENGE <b>→</b></span></button>
-        <button class="mode-card mode-green" data-mode="team"><span class="mode-number">04</span><span class="mode-emoji">🏆</span><h3>Jamoaviy duel</h3><p>Ikkala jamoa bir ekranda, bir xil savolga javob beradi. Har ikkala jamoa har raundda teng imkoniyatga ega!</p><span class="mode-bottom">2 JAMOA • 30 SONIYA <b>→</b></span></button>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">O‘YIN REJIMINI TANLA</div>
+          <h2>Qaysi sinovga tayyorsan?</h2>
+        </div><button class="ghost-btn" id="backHome">← Bosh sahifa</button>
       </div>
-      <div class="tip-box"><span>💡</span><p><b>Laboratoriya qoidasi:</b> javobni tanlagach, izohni o‘qi. Har bir xato — yangi kashfiyot!</p></div>
+      <div class="mode-grid">
+        <button class="mode-card mode-blue" data-mode="all"><span class="mode-number">01</span><span
+            class="mode-emoji">🧠</span>
+          <h3>Bilim portali</h3>
+          <p>Modda holatlari, kinetik model, Broun harakati, temperatura va gaz qonunlari.</p><span
+            class="mode-bottom">NAZARIY SAVOLLAR <b>→</b></span>
+        </button>
+        <button class="mode-card mode-orange" data-mode="heat"><span class="mode-number">02</span><span
+            class="mode-emoji">🌡️</span>
+          <h3>Issiqlik ustasi</h3>
+          <p>Issiqlikdan kengayish bo‘yicha 15 ta hisoblash masalasi. Formulani qo‘llab ko‘r!</p><span
+            class="mode-bottom">15 TA MASALA <b>→</b></span>
+        </button>
+        <button class="mode-card mode-purple" data-mode="mix"><span class="mode-number">03</span><span
+            class="mode-emoji">⚡</span>
+          <h3>Ekstremal aralashma</h3>
+          <p>Har xil mavzulardan aralash savollar. Tezlik va aniqlik muhim!</p><span class="mode-bottom">ARALASH
+            CHALLENGE <b>→</b></span>
+        </button>
+        <button class="mode-card mode-green" data-mode="team"><span class="mode-number">04</span><span
+            class="mode-emoji">🏆</span>
+          <h3>Jamoaviy duel</h3>
+          <p>Ikkala jamoa bir ekranda, bir xil savolga javob beradi. Har ikkala jamoa har raundda teng imkoniyatga ega!
+          </p><span class="mode-bottom">2 JAMOA • 30 SONIYA <b>→</b></span>
+        </button>
+      </div>
+      <div class="tip-box"><span>💡</span>
+        <p><b>Laboratoriya qoidasi:</b> javobni tanlagach, izohni o‘qi. Har bir xato — yangi kashfiyot!</p>
+      </div>
     </section>
 
     <section id="quiz" class="screen">
-      <div class="quiz-top"><button class="ghost-btn" id="quitBtn">← Rejimlar</button><div class="quiz-label" id="modeLabel">BILIM PORTALI</div><div class="quiz-tools"><div class="timer-pill">⏱ <span id="timer">20</span>s</div><button class="ghost-btn sound-btn" id="soundBtn" aria-pressed="true">🔊 Ovoz: ON</button><div class="score-pill">✦ <span id="score">0</span> XP</div></div></div><div id="teamBar" class="team-bar hidden"><span id="teamTurn">🔵 1-JAMOA NAVBATI</span><span>🔵 <b id="team1Score">0</b> &nbsp;—&nbsp; 🟠 <b id="team2Score">0</b></span></div>
-      <div class="progress-wrap"><div class="progress-meta"><span id="questionCount">SAVOL 1 / 30</span><span id="percent">0%</span></div><div class="progress-track"><div id="progressBar"></div></div></div>
-      <div class="quiz-layout"><div class="question-panel"><div class="topic-chip" id="topicChip">KINETIK MODEL</div><h2 id="questionText">Savol yuklanmoqda...</h2><div id="formulaBox" class="formula-box hidden"></div><div id="answers" class="answers"></div><div id="teamDuel" class="duel-grid hidden"><section class="duel-team blue"><h3 id="duelName0">🔵 1-jamoa</h3><div id="duelAnswers0" class="answers"></div><p id="duelStatus0" class="duel-status">Javob tanlang</p><div id="duelFeedback0" class="duel-feedback"></div></section><section class="duel-team orange"><h3 id="duelName1">🟠 2-jamoa</h3><div id="duelAnswers1" class="answers"></div><p id="duelStatus1" class="duel-status">Javob tanlang</p><div id="duelFeedback1" class="duel-feedback"></div></section></div><div id="feedback" class="feedback hidden"></div><button id="nextBtn" class="primary-btn next-btn" disabled>KEYINGI SAVOL <span>→</span></button></div>
-        <aside class="side-panel"><div class="side-icon">🧪</div><h3>Laboratoriya holati</h3><p id="sideMessage">Har bir to‘g‘ri javob seni yangi bosqichga olib chiqadi.</p><div class="side-divider"></div><div class="mini-stat"><span>TO‘G‘RI JAVOB</span><b id="correctCount">0</b></div><div class="mini-stat"><span>QOLGAN SAVOL</span><b id="remainingCount">30</b></div><div class="side-tip"><span>✦ ESDA TUT</span><p>Harorat oshsa, zarrachalarning o‘rtacha kinetik energiyasi ortadi.</p></div></aside></div>
+      <div class="quiz-top"><button class="ghost-btn" id="quitBtn">← Rejimlar</button>
+        <div class="quiz-label" id="modeLabel">BILIM PORTALI</div>
+        <div class="quiz-tools">
+          <div class="timer-pill">⏱ <span id="timer">20</span>s</div><button class="ghost-btn sound-btn" id="soundBtn"
+            aria-pressed="true">🔊 Ovoz: ON</button>
+          <div class="score-pill">✦ <span id="score">0</span> XP</div>
+        </div>
+      </div>
+      <div id="teamBar" class="team-bar hidden"><span id="teamTurn">🔵 1-JAMOA NAVBATI</span><span>🔵 <b
+            id="team1Score">0</b> &nbsp;—&nbsp; 🟠 <b id="team2Score">0</b></span></div>
+      <div class="progress-wrap">
+        <div class="progress-meta"><span id="questionCount">SAVOL 1 / 30</span><span id="percent">0%</span></div>
+        <div class="progress-track">
+          <div id="progressBar"></div>
+        </div>
+      </div>
+      <div class="quiz-layout">
+        <div class="question-panel">
+          <div class="topic-chip" id="topicChip">KINETIK MODEL</div>
+          <h2 id="questionText">Savol yuklanmoqda...</h2>
+          <div id="formulaBox" class="formula-box hidden"></div>
+          <div id="answers" class="answers"></div>
+          <div id="teamDuel" class="duel-grid hidden">
+            <section class="duel-team blue">
+              <h3 id="duelName0">🔵 1-jamoa</h3>
+              <div id="duelAnswers0" class="answers"></div>
+              <p id="duelStatus0" class="duel-status">Javob tanlang</p>
+              <div id="duelFeedback0" class="duel-feedback"></div>
+            </section>
+            <section class="duel-team orange">
+              <h3 id="duelName1">🟠 2-jamoa</h3>
+              <div id="duelAnswers1" class="answers"></div>
+              <p id="duelStatus1" class="duel-status">Javob tanlang</p>
+              <div id="duelFeedback1" class="duel-feedback"></div>
+            </section>
+          </div>
+          <div id="feedback" class="feedback hidden"></div><button id="nextBtn" class="primary-btn next-btn"
+            disabled>KEYINGI SAVOL <span>→</span></button>
+        </div>
+        <aside class="side-panel">
+          <div class="side-icon">🧪</div>
+          <h3>Laboratoriya holati</h3>
+          <p id="sideMessage">Har bir to‘g‘ri javob seni yangi bosqichga olib chiqadi.</p>
+          <div class="side-divider"></div>
+          <div class="mini-stat"><span>TO‘G‘RI JAVOB</span><b id="correctCount">0</b></div>
+          <div class="mini-stat"><span>QOLGAN SAVOL</span><b id="remainingCount">30</b></div>
+          <div class="side-tip"><span>✦ ESDA TUT</span>
+            <p>Harorat oshsa, zarrachalarning o‘rtacha kinetik energiyasi ortadi.</p>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section id="result" class="screen result-screen"><div class="result-orb">🏆</div><div class="eyebrow">SINOV YAKUNLANDI</div><h2 id="resultTitle">Ajoyib natija!</h2><p id="resultText">Sen laboratoriya sinovini tugatding.</p><div class="result-stats"><div><small>TO‘G‘RI JAVOB</small><b id="finalCorrect">0/0</b></div><div><small>ANIQLIK</small><b id="finalPercent">0%</b></div><div><small>TO‘PLANGAN XP</small><b id="finalXP">0</b></div></div><div id="teamResult" class="team-result hidden"></div><div class="leaderboard"><h3>🏅 LABORATORIYA REYTINGI</h3><ol id="leaderboardList"><li>Hozircha natija yo‘q — birinchi bo‘lib rekord o‘rnat!</li></ol></div><div class="result-actions"><button class="primary-btn" id="retryBtn">YANA O‘YNASH ↻</button><button class="ghost-btn" id="modesBtn">REJIMLAR ↗</button></div></section>
+    <section id="result" class="screen result-screen">
+      <div class="result-orb">🏆</div>
+      <div class="eyebrow">SINOV YAKUNLANDI</div>
+      <h2 id="resultTitle">Ajoyib natija!</h2>
+      <p id="resultText">Sen laboratoriya sinovini tugatding.</p>
+      <div class="result-stats">
+        <div><small>TO‘G‘RI JAVOB</small><b id="finalCorrect">0/0</b></div>
+        <div><small>ANIQLIK</small><b id="finalPercent">0%</b></div>
+        <div><small>TO‘PLANGAN XP</small><b id="finalXP">0</b></div>
+      </div>
+      <div id="teamResult" class="team-result hidden"></div>
+      <div class="leaderboard">
+        <h3>🏅 LABORATORIYA REYTINGI</h3>
+        <ol id="leaderboardList">
+          <li>Hozircha natija yo‘q — birinchi bo‘lib rekord o‘rnat!</li>
+        </ol>
+      </div>
+      <div class="result-actions"><button class="primary-btn" id="retryBtn">YANA O‘YNASH ↻</button><button
+          class="ghost-btn" id="modesBtn">REJIMLAR ↗</button></div>
+    </section>
     <footer class="footer"><span>ISSIQLIK LABIRINTI</span><span>FIZIKA — KUZAT • TAHLIL QIL • KASHF ET</span></footer>
   </main>
   <script>
-const theory = [
- {t:'Modda holatlari',q:'Moddaning asosiy uch agregat holati qaysilar?',a:['Qattiq, suyuq, gaz','Issiq, sovuq, iliq','Atom, molekula, ion','Yengil, og‘ir, zich'],c:0,e:'Moddalar odatiy sharoitlarda qattiq, suyuq va gaz holatida uchraydi.'},
- {t:'Agregat holat o‘zgarishi',q:'Qattiq moddaning suyuqlikka aylanishi nima deyiladi?',a:['Bug‘lanish','Erish','Kondensatsiya','Qotish'],c:1,e:'Erish — qattiq moddaning suyuq holatga o‘tishi.'},
- {t:'Agregat holat o‘zgarishi',q:'Gazning suyuqlikka aylanish jarayoni qaysi?',a:['Sublimatsiya','Qotish','Kondensatsiya','Erish'],c:2,e:'Kondensatsiyada gaz sovib, suyuqlikka aylanadi.'},
- {t:'Kinetik model',q:'Kinetik modelga ko‘ra, barcha moddalar nimadan tashkil topgan?',a:['Faqat suvdan','Mayda zarrachalardan','Faqat havodan','Uzluksiz bir jinsli qatlamdan'],c:1,e:'Moddalar atom, molekula yoki ion kabi juda mayda zarrachalardan tashkil topgan.'},
- {t:'Zarrachalar harakati',q:'Qattiq jism ichidagi zarrachalar odatda qanday harakatlanadi?',a:['Butunlay harakatsiz','Bir-biridan uzoqlashib uchadi','O‘z muvozanat holati atrofida tebranadi','Faqat pastga tushadi'],c:2,e:'Qattiq jismlarda zarrachalar zich joylashgan va muvozanat holati atrofida tebranadi.'},
- {t:'Zarrachalar harakati',q:'Suyuqlik zarrachalari qattiq jism zarrachalaridan qanday farq qiladi?',a:['Umuman harakatlanmaydi','Bir-birining yonidan siljishi mumkin','Har doim uzoq masofada bo‘ladi','Faqat tebranadi'],c:1,e:'Suyuqlik zarrachalari yaqin joylashgan bo‘lsa ham, bir-birining yonidan siljiy oladi.'},
- {t:'Gazlar va kinetik model',q:'Gaz idishning butun hajmini egallashining asosiy sababi nima?',a:['Zarrachalari erib ketadi','Zarrachalari erkin va tartibsiz harakatlanadi','Zarrachalari mutlaqo tinch','Gazning shakli o‘zgarmaydi'],c:1,e:'Gaz zarrachalari tez, tartibsiz harakatlanib, mavjud bo‘shliqni to‘ldiradi.'},
- {t:'Temperatura',q:'Temperatura oshganda zarrachalarning o‘rtacha kinetik energiyasi odatda qanday o‘zgaradi?',a:['Kamayadi','O‘zgarmaydi','Ortadi','Yo‘qoladi'],c:2,e:'Temperatura zarrachalarning o‘rtacha kinetik energiyasi bilan bog‘liq.'},
- {t:'Kinetik model dalillari',q:'Atir hidining xonaga tarqalishi qaysi hodisaga misol?',a:['Diffuziya','Erish','Qotish','Issiqlikdan kengayish'],c:0,e:'Diffuziya — zarrachalarning tartibsiz harakati tufayli moddalarning o‘zaro aralashishi.'},
- {t:'Broun harakati',q:'Broun harakati nimani ko‘rsatishga yordam beradi?',a:['Zarrachalar mavjudligi va harakatini','Jismning massasizligini','Harorat doim nol ekanini','Gazning rangi borligini'],c:0,e:'Suyuqlik yoki gazdagi mayda zarrachalarning tartibsiz harakati molekulalar harakatining dalilidir.'},
- {t:'Kuchlar va kinetik model',q:'Qattiq jismlar o‘z shaklini saqlashiga nima yordam beradi?',a:['Zarrachalar orasidagi tortishish va yaqin joylashuv','Zarrachalarning yo‘qligi','Faqat gravitatsiya yo‘qligi','Zarrachalarning cheksiz uzoqligi'],c:0,e:'Zarrachalar orasidagi o‘zaro ta’sir kuchlari qattiq jism shaklini saqlashga yordam beradi.'},
- {t:'Temperatura va Selsiy',q:'Suv normal atmosfera bosimida taxminan necha °C da muzlaydi?',a:['−100 °C','0 °C','50 °C','100 °C'],c:1,e:'Suvning muzlash harorati normal bosimda 0 °C.'},
- {t:'Kelvin shkalasi',q:'Selsiydan Kelvinga o‘tish uchun qaysi formula ishlatiladi?',a:['T = t − 273','T = t + 273','T = 2t','T = t ÷ 273'],c:1,e:'Maktab hisoblarida Kelvin harorati taxminan T = t + 273 orqali topiladi.'},
- {t:'Temperatura va ichki energiya',q:'Jism qizdirilganda uning ichki energiyasi ko‘pincha nima sababdan ortadi?',a:['Zarrachalar harakati kuchayadi','Zarrachalar yo‘qoladi','Massasi doim ikki baravar bo‘ladi','Zarrachalar to‘xtaydi'],c:0,e:'Qizdirish zarrachalarning o‘rtacha kinetik energiyasini oshiradi; ichki energiya ham ortishi mumkin.'},
- {t:'Gaz qonunlari',q:'Gazning temperaturasi o‘zgarmasa, hajm kamaytirilganda bosim odatda qanday o‘zgaradi?',a:['Kamayadi','Ortadi','Nol bo‘ladi','Har doim o‘zgarmaydi'],c:1,e:'Boyl qonuniga ko‘ra, temperatura o‘zgarmas bo‘lsa, hajm kamayganda bosim ortadi.'},
- {t:'Issiqlikdan kengayish',q:'Ko‘pchilik jismlar qizdirilganda nima sodir bo‘ladi?',a:['Kengayadi','Har doim qisqaradi','Massasi yo‘qoladi','Zichligi cheksiz ortadi'],c:0,e:'Qizdirilganda zarrachalarning o‘rtacha oralig‘i odatda ortadi, jism kengayadi.'},
- {t:'Qattiq jismlarning kengayishi',q:'Temir relslar orasida kichik tirqish qoldirilishining sababi nima?',a:['Relslarni yengillashtirish','Issiqda kengayish uchun joy qoldirish','Sovuqni to‘xtatish','Poyezdni sekinlatish'],c:1,e:'Issiqda relslar uzayadi; tirqish deformatsiya xavfini kamaytiradi.'},
- {t:'Kengayish qo‘llanilishi',q:'Suyuqlikli termometr qanday hodisadan foydalanadi?',a:['Suyuqlikning qiziganda kengayishidan','Magnitlanishdan','Yorug‘lik qaytishidan','Bug‘ning muzlashidan'],c:0,e:'Termometrdagi suyuqlik qiziganda kengayib, naycha bo‘ylab yuqoriga ko‘tariladi.'},
- {t:'Salbiy oqibatlar',q:'Ko‘priklarda kengayish choklari nima uchun kerak?',a:['Ko‘prik rangini o‘zgartirish uchun','Harorat ta’siridagi uzunlik o‘zgarishiga imkon berish uchun','Suvni isitish uchun','Og‘irlikni yo‘qotish uchun'],c:1,e:'Kengayish choklari issiq-sovuq almashinuvida ortiqcha kuchlanish va shikastlanish xavfini kamaytiradi.'},
- {t:'Gazlarning kengayishi',q:'Bosim deyarli o‘zgarmaganda gaz qizdirilsa, uning hajmi odatda qanday o‘zgaradi?',a:['Ortadi','Kamayadi','Mutlaqo yo‘qoladi','Har doim bir xil qoladi'],c:0,e:'Sharl qonuniga ko‘ra, bosim o‘zgarmasa, gaz temperaturasi oshishi bilan hajmi ortadi.'},
- {t:'Holatlarni solishtirish',q:'Qaysi holatda modda o‘z hajmi va shaklini odatda saqlaydi?',a:['Gaz','Suyuqlik','Qattiq jism','Barcha gazlar'],c:2,e:'Qattiq jism odatda o‘z shakli va hajmini saqlaydi.'},
- {t:'Holatlarni solishtirish',q:'Suyuqlik uchun to‘g‘ri tavsifni toping.',a:['Shakli va hajmi doim o‘zgarmaydi','Hajmi deyarli saqlanadi, shakli idishga moslashadi','Har doim idishdan chiqib ketadi','Zarrachalari juda uzoq joylashgan'],c:1,e:'Suyuqlikning hajmi deyarli saqlanadi, ammo shakli idishga moslashadi.'},
- {t:'Solishtirma issiqlik sig‘imi',q:'Solishtirma issiqlik sig‘imi nimani bildiradi?',a:['1 kg modda haroratini 1 °C ga o‘zgartirish uchun kerak bo‘lgan issiqlikni','Jismning faqat hajmini','Zarrachalar sonini','Faqat erish haroratini'],c:0,e:'Q = cmΔT formulada c — solishtirma issiqlik sig‘imi.'},
- {t:'Ichki energiya',q:'Ichki energiya nimalar bilan bog‘liq?',a:['Zarrachalarning tartibsiz harakati va o‘zaro ta’siri bilan','Faqat jism rangiga','Faqat jismning joylashuviga','Faqat tashqi ko‘rinishga'],c:0,e:'Ichki energiya zarrachalarning kinetik va potensial energiyalari bilan bog‘liq.'},
- {t:'Diffuziya',q:'Diffuziya qaysi holatda odatda tezroq kechadi?',a:['Qattiq jismlarda','Gazlarda','Faqat muzda','Barcha holatda aynan bir xil'],c:1,e:'Gazlarda zarrachalar erkin va tez harakatlangani uchun diffuziya odatda tezroq kechadi.'},
- {t:'Gaz bosimi',q:'Gaz bosimi idish devoriga qanday hosil bo‘ladi?',a:['Zarrachalarning devorga urilishi natijasida','Gaz rangi sababli','Zarrachalar tinch turgani uchun','Idish devori gazni tortgani uchun'],c:0,e:'Gaz zarrachalari devor bilan to‘qnashib, kuch ta’sirini yuzaga keltiradi.'},
- {t:'Erish va qotish',q:'Sof modda erish haroratida eriyotganda, bosim o‘zgarmasa, energiya asosan nimaga sarflanadi?',a:['Zarrachalar orasidagi bog‘lanishlarni o‘zgartirishga','Temperaturani cheksiz oshirishga','Massani kamaytirishga','Zarrachalarni yo‘q qilishga'],c:0,e:'Erish vaqtida berilgan energiya zarrachalar orasidagi o‘zaro ta’sirni o‘zgartirishga sarflanadi.'},
- {t:'Temperatura birliklari',q:'20 °C taxminan necha kelvin?',a:['20 K','253 K','293 K','373 K'],c:2,e:'T = 20 + 273 = 293 K.'},
- {t:'Issiqlik almashinuvi',q:'Issiqlik o‘z-o‘zidan qaysi yo‘nalishda uzatiladi?',a:['Sovuqroq jismdan issiqroqqa','Issiqroq jismdan sovuqroqqa','Faqat yuqoriga','Faqat metallga'],c:1,e:'Issiqlik o‘z-o‘zidan yuqoriroq temperaturali jismdan pastroq temperaturali jismga o‘tadi.'},
- {t:'Kinetik model',q:'Gazni siqish nisbatan oson bo‘lishining sababi nima?',a:['Zarrachalar orasida katta bo‘shliqlar bor','Zarrachalar umuman yo‘q','Gaz qattiq jismdir','Gazning massasi yo‘q'],c:0,e:'Gaz zarrachalari orasidagi masofa katta bo‘lgani uchun ularni yaqinlashtirish mumkin.'},
- {t:'Issiqlikdan kengayish',q:'Qaysi misol issiqlikdan kengayishning foydali qo‘llanishidir?',a:['Ko‘prikning egilib qolishi','Suyuqlikli termometrda ko‘rsatkichning ko‘tarilishi','Relsning bukilishi','Quvurning yorilishi'],c:1,e:'Termometr suyuqligining kengayishi temperaturani ko‘rsatishga yordam beradi.'}
-];
-const heat = [
- {t:'Chiziqli kengayish',q:'Temir sterjenning boshlang‘ich uzunligi 2 m. α = 0,000012 °C⁻¹, temperatura 50 °C ga oshdi. Uzayish qancha?',f:'ΔL = α · L₀ · ΔT',a:['0,12 mm','1,2 mm','12 mm','120 mm'],c:1,e:'ΔL = 0,000012 × 2 × 50 = 0,0012 m = 1,2 mm.'},
- {t:'Chiziqli kengayish',q:'Uzunligi 5 m bo‘lgan sterjen α = 0,00002 °C⁻¹. Harorat 40 °C ga oshsa, qancha uzayadi?',f:'ΔL = α · L₀ · ΔT',a:['0,4 mm','4 mm','40 mm','0,04 mm'],c:1,e:'ΔL = 0,00002 × 5 × 40 = 0,004 m = 4 mm.'},
- {t:'Chiziqli kengayish',q:'2 m metall sterjen 3 mm ga uzaydi. Temperatura o‘zgarishi 100 °C bo‘lsa, α ni toping.',f:'α = ΔL ÷ (L₀ · ΔT)',a:['0,0000015 °C⁻¹','0,000015 °C⁻¹','0,0015 °C⁻¹','0,015 °C⁻¹'],c:1,e:'α = 0,003 ÷ (2 × 100) = 0,000015 °C⁻¹.'},
- {t:'Chiziqli kengayish',q:'Uzunligi 10 m bo‘lgan rels α = 0,000011 °C⁻¹. Harorat 30 °C ga oshdi. Uzayish qancha?',f:'ΔL = α · L₀ · ΔT',a:['0,33 mm','3,3 mm','33 mm','0,033 mm'],c:1,e:'ΔL = 0,000011 × 10 × 30 = 0,0033 m = 3,3 mm.'},
- {t:'Chiziqli kengayish',q:'Aluminiy sim uzunligi 4 m, α = 0,000024 °C⁻¹. Harorat 25 °C ga oshsa, uzayish qancha?',f:'ΔL = α · L₀ · ΔT',a:['0,24 mm','2,4 mm','24 mm','0,024 mm'],c:1,e:'ΔL = 0,000024 × 4 × 25 = 0,0024 m = 2,4 mm.'},
- {t:'Chiziqli kengayish',q:'5 m sterjen 2 mm ga uzaydi. α = 0,00001 °C⁻¹. Harorat necha °C ga oshgan?',f:'ΔT = ΔL ÷ (α · L₀)',a:['4 °C','20 °C','40 °C','400 °C'],c:2,e:'ΔT = 0,002 ÷ (0,00001 × 5) = 40 °C.'},
- {t:'Chiziqli kengayish',q:'Uzunligi 3 m bo‘lgan sterjen 60 °C ga qizdirildi va 3,6 mm uzaydi. α ni toping.',f:'α = ΔL ÷ (L₀ · ΔT)',a:['0,000002 °C⁻¹','0,00002 °C⁻¹','0,0002 °C⁻¹','0,002 °C⁻¹'],c:1,e:'α = 0,0036 ÷ (3 × 60) = 0,00002 °C⁻¹.'},
- {t:'Chiziqli kengayish',q:'α = 0,000012 °C⁻¹ bo‘lgan 8 m sterjen 20 °C ga qizdirildi. Yakuniy uzunligi qancha?',f:'L = L₀ + ΔL;  ΔL = α · L₀ · ΔT',a:['8,00192 m','8,0192 m','8,192 m','8,1920 cm'],c:0,e:'ΔL = 0,000012 × 8 × 20 = 0,00192 m. L = 8,00192 m.'},
- {t:'Chiziqli kengayish',q:'4 m uzunlikdagi metall sterjen 80 °C ga qizdirilganda 4,8 mm uzaydi. α qancha?',f:'α = ΔL ÷ (L₀ · ΔT)',a:['0,0000015 °C⁻¹','0,000015 °C⁻¹','0,00015 °C⁻¹','0,0015 °C⁻¹'],c:1,e:'α = 0,0048 ÷ (4 × 80) = 0,000015 °C⁻¹.'},
- {t:'Chiziqli kengayish',q:'Uzunligi 12 m bo‘lgan rels α = 0,00001 °C⁻¹. Harorat 50 °C ga o‘zgarsa, uzunlik o‘zgarishi qancha?',f:'ΔL = α · L₀ · ΔT',a:['0,6 mm','6 mm','60 mm','0,06 mm'],c:1,e:'ΔL = 0,00001 × 12 × 50 = 0,006 m = 6 mm.'},
- {t:'Chiziqli kengayish',q:'3 m sterjen 1,8 mm uzaydi. α = 0,000012 °C⁻¹. Temperatura o‘zgarishini toping.',f:'ΔT = ΔL ÷ (α · L₀)',a:['5 °C','50 °C','500 °C','0,5 °C'],c:1,e:'ΔT = 0,0018 ÷ (0,000012 × 3) = 50 °C.'},
- {t:'Chiziqli kengayish',q:'Uzunligi 6 m bo‘lgan sterjen α = 0,00002 °C⁻¹. Harorat 15 °C ga oshdi. Uzayish qancha?',f:'ΔL = α · L₀ · ΔT',a:['0,18 mm','1,8 mm','18 mm','0,018 mm'],c:1,e:'ΔL = 0,00002 × 6 × 15 = 0,0018 m = 1,8 mm.'},
- {t:'Chiziqli kengayish',q:'Metall sterjen 2,5 m dan 2,503 m ga uzaydi. Uzayish qancha millimetr?',f:'ΔL = L − L₀',a:['0,3 mm','3 mm','30 mm','300 mm'],c:1,e:'2,503 − 2,5 = 0,003 m = 3 mm.'},
- {t:'Chiziqli kengayish',q:'Uzunligi 2 m bo‘lgan sim α = 0,000017 °C⁻¹. Harorat 100 °C ga oshdi. Uzayish qancha?',f:'ΔL = α · L₀ · ΔT',a:['0,34 mm','3,4 mm','34 mm','0,034 mm'],c:1,e:'ΔL = 0,000017 × 2 × 100 = 0,0034 m = 3,4 mm.'},
- {t:'Chiziqli kengayish',q:'6 m sterjen α = 0,000015 °C⁻¹. U 4,5 mm ga uzaydi. Harorat qancha o‘zgargan?',f:'ΔT = ΔL ÷ (α · L₀)',a:['5 °C','25 °C','50 °C','500 °C'],c:2,e:'ΔT = 0,0045 ÷ (0,000015 × 6) = 50 °C.'}
-];
-const screens = ['home','modes','quiz','result'];
-let mode='all',questions=[],index=0,score=0,correct=0,answered=false,lastMode='all';
-let timerInterval=null,timeLeft=20,soundOn=true,teamScores=[0,0],teamNames=['1-jamoa','2-jamoa'],teamAnswers=[null,null],teamRoundDone=false;
-const $=id=>document.getElementById(id);
-function show(name){screens.forEach(s=>$(s).classList.toggle('active',s===name));window.scrollTo({top:0,behavior:'smooth'})}
-function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
-function stopTimer(){if(timerInterval){clearInterval(timerInterval);timerInterval=null}}
-function playTone(freq=660,duration=.12){if(!soundOn)return;try{const C=window.AudioContext||window.webkitAudioContext;const ctx=new C();const osc=ctx.createOscillator(),gain=ctx.createGain();osc.frequency.value=freq;osc.type='sine';gain.gain.setValueAtTime(.08,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+duration);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+duration);osc.onended=()=>ctx.close()}catch(e){}}
-$('startBtn').onclick=()=>show('modes');$('backHome').onclick=()=>show('home');$('quitBtn').onclick=()=>{stopTimer();show('modes')};$('modesBtn').onclick=()=>show('modes');$('retryBtn').onclick=()=>startGame(lastMode);
-$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊 Ovoz: ON':'🔇 Ovoz: OFF';$('soundBtn').setAttribute('aria-pressed',String(soundOn));if(soundOn)playTone(700)};
-document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>startGame(b.dataset.mode)));
-function startGame(m){mode=m;lastMode=m;index=0;score=0;correct=0;answered=false;teamScores=[0,0];teamAnswers=[null,null];teamRoundDone=false;
- if(m==='team'){teamNames[0]=(prompt('1-jamoa nomini kiriting:','Ko‘k yulduzlar')||'1-jamoa').trim()||'1-jamoa';teamNames[1]=(prompt('2-jamoa nomini kiriting:','Olov jamoasi')||'2-jamoa').trim()||'2-jamoa';questions=shuffle([...theory,...heat]).slice(0,20)}
- else questions=shuffle(m==='heat'?heat:m==='all'?theory:[...theory,...heat]).map(q=>({...q}));
- $('modeLabel').textContent=m==='heat'?'ISSIQLIK USTASI':m==='mix'?'EKSTREMAL ARALASHMA':m==='team'?'JAMOAVIY DUEL':'BILIM PORTALI';
- $('teamBar').classList.toggle('hidden',m!=='team');$('teamResult').classList.add('hidden');show('quiz');renderQuestion()}
-function makeAnswerButtons(targetId,q,teamIndex=null,options=null){const target=$(targetId);target.innerHTML='';(options||shuffle(q.a.map((text,i)=>({text,original:i})))).forEach((o,i)=>{const btn=document.createElement('button');btn.className='answer-btn';const letter=document.createElement('span');letter.className='answer-letter';letter.textContent='ABCD'[i];const label=document.createElement('span');label.textContent=o.text;btn.append(letter,label);btn.addEventListener('click',()=>teamIndex===null?chooseAnswer(btn,o.original,q):chooseTeamAnswer(teamIndex,o.original,q,btn));target.appendChild(btn)})}
-function renderQuestion(){stopTimer();answered=false;teamAnswers=[null,null];teamRoundDone=false;const q=questions[index];$('topicChip').textContent=q.t.toUpperCase();$('questionText').textContent=q.q;$('formulaBox').textContent=q.f||'';$('formulaBox').classList.toggle('hidden',!q.f);$('feedback').className='feedback hidden';$('feedback').textContent='';$('nextBtn').disabled=true;$('nextBtn').innerHTML=index===questions.length-1?'NATIJANI KO‘RISH <span>↗</span>':'KEYINGI SAVOL <span>→</span>';$('questionCount').textContent=`SAVOL ${index+1} / ${questions.length}`;$('percent').textContent=`${Math.round(index/questions.length*100)}%`;$('progressBar').style.width=`${index/questions.length*100}%`;$('score').textContent=score;$('correctCount').textContent=correct;$('remainingCount').textContent=questions.length-index-1;$('sideMessage').textContent=mode==='heat'?'Formulani tanla, qiymatlarni qo‘y va birliklarni tekshir.':mode==='team'?'Ikkala jamoa ham bir xil savolga javob beradi. Har bir jamoa o‘z ustunidan bittadan javob tanlasin.':'Har bir to‘g‘ri javob seni yangi bosqichga olib chiqadi.';
- $('answers').classList.toggle('hidden',mode==='team');$('teamDuel').classList.toggle('hidden',mode!=='team');$('feedback').classList.toggle('hidden',mode==='team');
- if(mode==='team'){$('teamTurn').textContent='⚔️ IKKALA JAMOA BIR VAQTDA';$('team1Score').textContent=teamScores[0];$('team2Score').textContent=teamScores[1];$('duelName0').textContent='🔵 '+teamNames[0];$('duelName1').textContent='🟠 '+teamNames[1];[0,1].forEach(i=>{$('duelStatus'+i).textContent='Javob tanlang';$('duelFeedback'+i).textContent='';$('duelFeedback'+i).className='duel-feedback'});const options=shuffle(q.a.map((text,i)=>({text,original:i})));makeAnswerButtons('duelAnswers0',q,0,options);makeAnswerButtons('duelAnswers1',q,1,options)}else{makeAnswerButtons('answers',q)}
- timeLeft=mode==='team'?30:mode==='heat'?45:30;$('timer').textContent=timeLeft;$('timer').parentElement.classList.remove('urgent');timerInterval=setInterval(()=>{timeLeft--;$('timer').textContent=timeLeft;if(timeLeft<=5)$('timer').parentElement.classList.add('urgent');if(timeLeft<=0){stopTimer();if(mode==='team'){if(!teamRoundDone){if(teamAnswers[0]===null)teamAnswers[0]=-1;if(teamAnswers[1]===null)teamAnswers[1]=-1;finishTeamRound(q,true)}}else if(!answered)timeoutQuestion(q)}},1000)}
-function markAnswer(q,choice,expired=false){if(answered)return;answered=true;stopTimer();document.querySelectorAll('#answers .answer-btn').forEach(b=>b.disabled=true);const buttons=[...document.querySelectorAll('#answers .answer-btn')];buttons.forEach(b=>{if(b.querySelector('span:last-child').textContent===q.a[q.c])b.classList.add('correct')});const isRight=choice===q.c;if(isRight){correct++;score+=10;playTone(880)}else playTone(240,.2);
- if(expired){$('feedback').className='feedback bad';$('feedback').innerHTML='⌛ <b>Vaqt tugadi!</b> '+q.e}else if(isRight){$('feedback').className='feedback';$('feedback').innerHTML='✓ <b>To‘g‘ri!</b> '+q.e}else{$('feedback').className='feedback bad';$('feedback').innerHTML='↗ <b>Yechimni o‘rgan:</b> '+q.e}
- $('score').textContent=score;$('correctCount').textContent=correct;$('remainingCount').textContent=questions.length-index-1;$('nextBtn').disabled=false;$('percent').textContent=`${Math.round((index+1)/questions.length*100)}%`;$('progressBar').style.width=`${(index+1)/questions.length*100}%`}
-function chooseAnswer(btn,choice,q){if(answered)return;markAnswer(q,choice,false);if(choice!==q.c)btn.classList.add('wrong')}
-function chooseTeamAnswer(teamIndex,choice,q,btn){if(teamAnswers[teamIndex]!==null||teamRoundDone)return;teamAnswers[teamIndex]=choice;const answerBox=$('duelAnswers'+teamIndex);answerBox.querySelectorAll('.answer-btn').forEach(b=>b.disabled=true);if(choice===q.c){teamScores[teamIndex]+=10;correct++;score+=10;playTone(880)}else{playTone(240,.2);btn.classList.add('wrong')}$('duelStatus'+teamIndex).textContent=choice===q.c?'Javob qabul qilindi ✓':'Javob qabul qilindi';$('team1Score').textContent=teamScores[0];$('team2Score').textContent=teamScores[1];$('score').textContent=score;$('correctCount').textContent=correct;if(teamAnswers.every(a=>a!==null))finishTeamRound(q,false)}
-function finishTeamRound(q,expired){if(teamRoundDone)return;teamRoundDone=true;stopTimer();[0,1].forEach(i=>{const box=$('duelAnswers'+i);box.querySelectorAll('.answer-btn').forEach(b=>{b.disabled=true;if(b.querySelector('span:last-child').textContent===q.a[q.c])b.classList.add('correct')});const choice=teamAnswers[i];$('duelStatus'+i).textContent=choice===null||choice===-1?'Vaqt tugadi — javob berilmadi':choice===q.c?'To‘g‘ri javob! +10 XP':'Noto‘g‘ri javob';$('duelFeedback'+i).textContent=(choice===q.c?'✅ To‘g‘ri. ':'❌ To‘g‘ri javob: '+q.a[q.c]+'. ')+q.e;$('duelFeedback'+i).className='duel-feedback'+(choice===q.c?'':' bad')});$('nextBtn').disabled=false;$('percent').textContent=`${Math.round((index+1)/questions.length*100)}%`;$('progressBar').style.width=`${(index+1)/questions.length*100}%`;$('remainingCount').textContent=questions.length-index-1;$('score').textContent=score;$('correctCount').textContent=correct}
-function timeoutQuestion(q){markAnswer(q,-1,true)}
-$('nextBtn').onclick=()=>{if(mode==='team'?!teamRoundDone:!answered)return;if(index<questions.length-1){index++;renderQuestion()}else finishGame()};
-function finishGame(){stopTimer();show('result');const pct=Math.round(correct/(questions.length*(mode==='team'?2:1))*100);$('finalCorrect').textContent=`${correct}/${questions.length*(mode==='team'?2:1)}`;$('finalPercent').textContent=`${pct}%`;$('finalXP').textContent=score;$('resultTitle').textContent=pct>=90?'Fizika dahosi!':pct>=70?'Zo‘r natija!':pct>=45?'Yaxshi urinish!':'Tadqiqot davom etadi!';$('resultText').textContent=pct>=90?'Sen zarrachalar olamini juda yaxshi tushunasan. Laboratoriya seni tan oldi!':pct>=70?'Ajoyib! Yana biroz mashq qilsang, eng yuqori darajaga chiqasan.':pct>=45?'Asosiy tushunchalar shakllanmoqda. Izohlarni ko‘rib, yana urinib ko‘r!':'Xato qilish — o‘rganishning bir qismi. Mavzularni qayta ko‘rib, yana sinab ko‘r!';
- if(mode==='team'){$('teamResult').classList.remove('hidden');const winner=teamScores[0]===teamScores[1]?'🤝 DURANG!':teamScores[0]>teamScores[1]?`🏆 G‘OLIB: ${teamNames[0]}`:`🏆 G‘OLIB: ${teamNames[1]}`;$('teamResult').textContent=`${winner} — ${teamScores[0]} : ${teamScores[1]}`}else $('teamResult').classList.add('hidden');
- saveLeaderboard(pct);renderLeaderboard()}
-function saveLeaderboard(pct){let name;if(mode==='team')name=`${teamNames[0]} vs ${teamNames[1]} (${teamScores[0]}:${teamScores[1]})`;else name=(prompt('Reytingga ismingizni kiriting:','Fizika ustasi')||'Fizika ustasi').trim().slice(0,32);let board=[];try{board=JSON.parse(localStorage.getItem('issiqLabLeaderboard')||'[]')}catch(e){}board.push({name,score,percent:pct,date:new Date().toLocaleDateString('uz-UZ')});board.sort((a,b)=>b.score-a.score||b.percent-a.percent);localStorage.setItem('issiqLabLeaderboard',JSON.stringify(board.slice(0,5)))}
-function renderLeaderboard(){let board=[];try{board=JSON.parse(localStorage.getItem('issiqLabLeaderboard')||'[]')}catch(e){}const list=$('leaderboardList');list.innerHTML='';if(!board.length){const li=document.createElement('li');li.textContent='Hozircha natija yo‘q — birinchi bo‘lib rekord o‘rnat!';list.appendChild(li);return}board.forEach(item=>{const li=document.createElement('li');li.textContent=`${item.name} — ${item.score} XP · ${item.percent}% · ${item.date}`;list.appendChild(li)})}
+    const theory = [
+      { t: 'Holat diagrammalari', q: 'Moddaning holati diagrammada odatda nimalar orqali ko‘rsatiladi?', a: ['Faqat rang va hid orqali', 'Temperatura va bosim kabi kattaliklar orqali', 'Faqat massa orqali', 'Faqat vaqt orqali'], c: 1, e: 'Holat diagrammasi moddaning qaysi sharoitda qattiq, suyuq yoki gaz holatida bo‘lishini ko‘rsatadi.' },
+      { t: 'Holat diagrammalari', q: 'Holat diagrammasidagi fazalar chegarasi nimani bildiradi?', a: ['Ikki holat orasidagi o‘tish shartlarini', 'Jismning rangini', 'Zarrachalar sonini', 'Faqat jism massasini'], c: 0, e: 'Chegara chizig‘i yonma-yon joylashgan ikki faza muvozanatda bo‘lishi mumkin bo‘lgan sharoitlarni ajratadi.' },
+      { t: 'Holat diagrammalari', q: 'Uchlamchi nuqta nimani anglatadi?', a: ['Faqat gaz mavjud bo‘lishini', 'Qattiq, suyuq va gaz fazalari birgalikda muvozanatda bo‘lishini', 'Modda yo‘qolishini', 'Temperatura doim 0 °C ekanini'], c: 1, e: 'Uchlamchi nuqtada moddaning qattiq, suyuq va gaz fazalari bir vaqtda muvozanatda bo‘lishi mumkin.' },
+      { t: 'Bog‘lanish', q: 'Zarrachalar orasidagi bog‘lanish kuchli bo‘lsa, modda odatda qaysi holatda bo‘ladi?', a: ['Gaz', 'Qattiq jism', 'Faqat bug‘', 'Plazma bo‘lishi shart'], c: 1, e: 'Qattiq jismlarda zarrachalar bir-biriga yaqin joylashadi va o‘zaro ta’siri kuchli bo‘ladi.' },
+      { t: 'Bog‘lanish', q: 'Kimyoviy bog‘lanishning asosiy vazifasi nima?', a: ['Atomlarni birikmada ushlab turish', 'Haroratni doim oshirish', 'Massani yo‘qotish', 'Faqat rang hosil qilish'], c: 0, e: 'Kimyoviy bog‘lanish atomlarni molekula yoki boshqa zarrachalar tarkibida birga tutib turadi.' },
+      { t: 'Bog‘lanish', q: 'Suv molekulasida kislorod va vodorod atomlari qanday bog‘langan?', a: ['Kimyoviy bog‘lanish orqali', 'Faqat magnit bilan', 'Umuman bog‘lanmagan', 'Faqat ishqalanish orqali'], c: 0, e: 'Suv molekulasidagi kislorod va vodorod atomlari kimyoviy bog‘lanish orqali birikkan.' },
+      { t: 'Bog‘lanish', q: 'Grafik yoki diagrammada ikki kattalik birga o‘zgarsa, ular orasidagi bog‘lanishni aniqlash uchun nima qilish kerak?', a: ['O‘qlar va qiymatlarni solishtirish', 'Faqat sarlavhani o‘qish', 'Rangiga qarab taxmin qilish', 'Diagrammani e’tiborsiz qoldirish'], c: 0, e: 'O‘qlar, birliklar va qiymatlarni tekshirish kattaliklar qanday bog‘langanini tushunishga yordam beradi.' },
+
+      { t: 'Modda holatlari', q: 'Moddaning asosiy uch agregat holati qaysilar?', a: ['Qattiq, suyuq, gaz', 'Issiq, sovuq, iliq', 'Atom, molekula, ion', 'Yengil, og‘ir, zich'], c: 0, e: 'Moddalar odatiy sharoitlarda qattiq, suyuq va gaz holatida uchraydi.' },
+      { t: 'Agregat holat o‘zgarishi', q: 'Qattiq moddaning suyuqlikka aylanishi nima deyiladi?', a: ['Bug‘lanish', 'Erish', 'Kondensatsiya', 'Qotish'], c: 1, e: 'Erish — qattiq moddaning suyuq holatga o‘tishi.' },
+      { t: 'Agregat holat o‘zgarishi', q: 'Gazning suyuqlikka aylanish jarayoni qaysi?', a: ['Sublimatsiya', 'Qotish', 'Kondensatsiya', 'Erish'], c: 2, e: 'Kondensatsiyada gaz sovib, suyuqlikka aylanadi.' },
+      { t: 'Kinetik model', q: 'Kinetik modelga ko‘ra, barcha moddalar nimadan tashkil topgan?', a: ['Faqat suvdan', 'Mayda zarrachalardan', 'Faqat havodan', 'Uzluksiz bir jinsli qatlamdan'], c: 1, e: 'Moddalar atom, molekula yoki ion kabi juda mayda zarrachalardan tashkil topgan.' },
+      { t: 'Zarrachalar harakati', q: 'Qattiq jism ichidagi zarrachalar odatda qanday harakatlanadi?', a: ['Butunlay harakatsiz', 'Bir-biridan uzoqlashib uchadi', 'O‘z muvozanat holati atrofida tebranadi', 'Faqat pastga tushadi'], c: 2, e: 'Qattiq jismlarda zarrachalar zich joylashgan va muvozanat holati atrofida tebranadi.' },
+      { t: 'Zarrachalar harakati', q: 'Suyuqlik zarrachalari qattiq jism zarrachalaridan qanday farq qiladi?', a: ['Umuman harakatlanmaydi', 'Bir-birining yonidan siljishi mumkin', 'Har doim uzoq masofada bo‘ladi', 'Faqat tebranadi'], c: 1, e: 'Suyuqlik zarrachalari yaqin joylashgan bo‘lsa ham, bir-birining yonidan siljiy oladi.' },
+      { t: 'Gazlar va kinetik model', q: 'Gaz idishning butun hajmini egallashining asosiy sababi nima?', a: ['Zarrachalari erib ketadi', 'Zarrachalari erkin va tartibsiz harakatlanadi', 'Zarrachalari mutlaqo tinch', 'Gazning shakli o‘zgarmaydi'], c: 1, e: 'Gaz zarrachalari tez, tartibsiz harakatlanib, mavjud bo‘shliqni to‘ldiradi.' },
+      { t: 'Temperatura', q: 'Temperatura oshganda zarrachalarning o‘rtacha kinetik energiyasi odatda qanday o‘zgaradi?', a: ['Kamayadi', 'O‘zgarmaydi', 'Ortadi', 'Yo‘qoladi'], c: 2, e: 'Temperatura zarrachalarning o‘rtacha kinetik energiyasi bilan bog‘liq.' },
+      { t: 'Kinetik model dalillari', q: 'Atir hidining xonaga tarqalishi qaysi hodisaga misol?', a: ['Diffuziya', 'Erish', 'Qotish', 'Issiqlikdan kengayish'], c: 0, e: 'Diffuziya — zarrachalarning tartibsiz harakati tufayli moddalarning o‘zaro aralashishi.' },
+      { t: 'Broun harakati', q: 'Broun harakati nimani ko‘rsatishga yordam beradi?', a: ['Zarrachalar mavjudligi va harakatini', 'Jismning massasizligini', 'Harorat doim nol ekanini', 'Gazning rangi borligini'], c: 0, e: 'Suyuqlik yoki gazdagi mayda zarrachalarning tartibsiz harakati molekulalar harakatining dalilidir.' },
+      { t: 'Kuchlar va kinetik model', q: 'Qattiq jismlar o‘z shaklini saqlashiga nima yordam beradi?', a: ['Zarrachalar orasidagi tortishish va yaqin joylashuv', 'Zarrachalarning yo‘qligi', 'Faqat gravitatsiya yo‘qligi', 'Zarrachalarning cheksiz uzoqligi'], c: 0, e: 'Zarrachalar orasidagi o‘zaro ta’sir kuchlari qattiq jism shaklini saqlashga yordam beradi.' },
+      { t: 'Temperatura va Selsiy', q: 'Suv normal atmosfera bosimida taxminan necha °C da muzlaydi?', a: ['−100 °C', '0 °C', '50 °C', '100 °C'], c: 1, e: 'Suvning muzlash harorati normal bosimda 0 °C.' },
+      { t: 'Kelvin shkalasi', q: 'Selsiydan Kelvinga o‘tish uchun qaysi formula ishlatiladi?', a: ['T = t − 273', 'T = t + 273', 'T = 2t', 'T = t ÷ 273'], c: 1, e: 'Maktab hisoblarida Kelvin harorati taxminan T = t + 273 orqali topiladi.' },
+      { t: 'Temperatura va ichki energiya', q: 'Jism qizdirilganda uning ichki energiyasi ko‘pincha nima sababdan ortadi?', a: ['Zarrachalar harakati kuchayadi', 'Zarrachalar yo‘qoladi', 'Massasi doim ikki baravar bo‘ladi', 'Zarrachalar to‘xtaydi'], c: 0, e: 'Qizdirish zarrachalarning o‘rtacha kinetik energiyasini oshiradi; ichki energiya ham ortishi mumkin.' },
+      { t: 'Gaz qonunlari', q: 'Gazning temperaturasi o‘zgarmasa, hajm kamaytirilganda bosim odatda qanday o‘zgaradi?', a: ['Kamayadi', 'Ortadi', 'Nol bo‘ladi', 'Har doim o‘zgarmaydi'], c: 1, e: 'Boyl qonuniga ko‘ra, temperatura o‘zgarmas bo‘lsa, hajm kamayganda bosim ortadi.' },
+      { t: 'Issiqlikdan kengayish', q: 'Ko‘pchilik jismlar qizdirilganda nima sodir bo‘ladi?', a: ['Kengayadi', 'Har doim qisqaradi', 'Massasi yo‘qoladi', 'Zichligi cheksiz ortadi'], c: 0, e: 'Qizdirilganda zarrachalarning o‘rtacha oralig‘i odatda ortadi, jism kengayadi.' },
+      { t: 'Qattiq jismlarning kengayishi', q: 'Temir relslar orasida kichik tirqish qoldirilishining sababi nima?', a: ['Relslarni yengillashtirish', 'Issiqda kengayish uchun joy qoldirish', 'Sovuqni to‘xtatish', 'Poyezdni sekinlatish'], c: 1, e: 'Issiqda relslar uzayadi; tirqish deformatsiya xavfini kamaytiradi.' },
+      { t: 'Kengayish qo‘llanilishi', q: 'Suyuqlikli termometr qanday hodisadan foydalanadi?', a: ['Suyuqlikning qiziganda kengayishidan', 'Magnitlanishdan', 'Yorug‘lik qaytishidan', 'Bug‘ning muzlashidan'], c: 0, e: 'Termometrdagi suyuqlik qiziganda kengayib, naycha bo‘ylab yuqoriga ko‘tariladi.' },
+      { t: 'Salbiy oqibatlar', q: 'Ko‘priklarda kengayish choklari nima uchun kerak?', a: ['Ko‘prik rangini o‘zgartirish uchun', 'Harorat ta’siridagi uzunlik o‘zgarishiga imkon berish uchun', 'Suvni isitish uchun', 'Og‘irlikni yo‘qotish uchun'], c: 1, e: 'Kengayish choklari issiq-sovuq almashinuvida ortiqcha kuchlanish va shikastlanish xavfini kamaytiradi.' },
+      { t: 'Gazlarning kengayishi', q: 'Bosim deyarli o‘zgarmaganda gaz qizdirilsa, uning hajmi odatda qanday o‘zgaradi?', a: ['Ortadi', 'Kamayadi', 'Mutlaqo yo‘qoladi', 'Har doim bir xil qoladi'], c: 0, e: 'Sharl qonuniga ko‘ra, bosim o‘zgarmasa, gaz temperaturasi oshishi bilan hajmi ortadi.' },
+      { t: 'Holatlarni solishtirish', q: 'Qaysi holatda modda o‘z hajmi va shaklini odatda saqlaydi?', a: ['Gaz', 'Suyuqlik', 'Qattiq jism', 'Barcha gazlar'], c: 2, e: 'Qattiq jism odatda o‘z shakli va hajmini saqlaydi.' },
+      { t: 'Holatlarni solishtirish', q: 'Suyuqlik uchun to‘g‘ri tavsifni toping.', a: ['Shakli va hajmi doim o‘zgarmaydi', 'Hajmi deyarli saqlanadi, shakli idishga moslashadi', 'Har doim idishdan chiqib ketadi', 'Zarrachalari juda uzoq joylashgan'], c: 1, e: 'Suyuqlikning hajmi deyarli saqlanadi, ammo shakli idishga moslashadi.' },
+      { t: 'Solishtirma issiqlik sig‘imi', q: 'Solishtirma issiqlik sig‘imi nimani bildiradi?', a: ['1 kg modda haroratini 1 °C ga o‘zgartirish uchun kerak bo‘lgan issiqlikni', 'Jismning faqat hajmini', 'Zarrachalar sonini', 'Faqat erish haroratini'], c: 0, e: 'Q = cmΔT formulada c — solishtirma issiqlik sig‘imi.' },
+      { t: 'Ichki energiya', q: 'Ichki energiya nimalar bilan bog‘liq?', a: ['Zarrachalarning tartibsiz harakati va o‘zaro ta’siri bilan', 'Faqat jism rangiga', 'Faqat jismning joylashuviga', 'Faqat tashqi ko‘rinishga'], c: 0, e: 'Ichki energiya zarrachalarning kinetik va potensial energiyalari bilan bog‘liq.' },
+      { t: 'Diffuziya', q: 'Diffuziya qaysi holatda odatda tezroq kechadi?', a: ['Qattiq jismlarda', 'Gazlarda', 'Faqat muzda', 'Barcha holatda aynan bir xil'], c: 1, e: 'Gazlarda zarrachalar erkin va tez harakatlangani uchun diffuziya odatda tezroq kechadi.' },
+      { t: 'Gaz bosimi', q: 'Gaz bosimi idish devoriga qanday hosil bo‘ladi?', a: ['Zarrachalarning devorga urilishi natijasida', 'Gaz rangi sababli', 'Zarrachalar tinch turgani uchun', 'Idish devori gazni tortgani uchun'], c: 0, e: 'Gaz zarrachalari devor bilan to‘qnashib, kuch ta’sirini yuzaga keltiradi.' },
+      { t: 'Erish va qotish', q: 'Sof modda erish haroratida eriyotganda, bosim o‘zgarmasa, energiya asosan nimaga sarflanadi?', a: ['Zarrachalar orasidagi bog‘lanishlarni o‘zgartirishga', 'Temperaturani cheksiz oshirishga', 'Massani kamaytirishga', 'Zarrachalarni yo‘q qilishga'], c: 0, e: 'Erish vaqtida berilgan energiya zarrachalar orasidagi o‘zaro ta’sirni o‘zgartirishga sarflanadi.' },
+      { t: 'Temperatura birliklari', q: '20 °C taxminan necha kelvin?', a: ['20 K', '253 K', '293 K', '373 K'], c: 2, e: 'T = 20 + 273 = 293 K.' },
+      { t: 'Issiqlik almashinuvi', q: 'Issiqlik o‘z-o‘zidan qaysi yo‘nalishda uzatiladi?', a: ['Sovuqroq jismdan issiqroqqa', 'Issiqroq jismdan sovuqroqqa', 'Faqat yuqoriga', 'Faqat metallga'], c: 1, e: 'Issiqlik o‘z-o‘zidan yuqoriroq temperaturali jismdan pastroq temperaturali jismga o‘tadi.' },
+      { t: 'Kinetik model', q: 'Gazni siqish nisbatan oson bo‘lishining sababi nima?', a: ['Zarrachalar orasida katta bo‘shliqlar bor', 'Zarrachalar umuman yo‘q', 'Gaz qattiq jismdir', 'Gazning massasi yo‘q'], c: 0, e: 'Gaz zarrachalari orasidagi masofa katta bo‘lgani uchun ularni yaqinlashtirish mumkin.' },
+      { t: 'Issiqlikdan kengayish', q: 'Qaysi misol issiqlikdan kengayishning foydali qo‘llanishidir?', a: ['Ko‘prikning egilib qolishi', 'Suyuqlikli termometrda ko‘rsatkichning ko‘tarilishi', 'Relsning bukilishi', 'Quvurning yorilishi'], c: 1, e: 'Termometr suyuqligining kengayishi temperaturani ko‘rsatishga yordam beradi.' }
+    ];
+    const heat = [
+      { t: 'Chiziqli kengayish', q: 'Temir sterjenning boshlang‘ich uzunligi 2 m. α = 0,000012 °C⁻¹, temperatura 50 °C ga oshdi. Uzayish qancha?', f: 'ΔL = α · L₀ · ΔT', a: ['0,12 mm', '1,2 mm', '12 mm', '120 mm'], c: 1, e: 'ΔL = 0,000012 × 2 × 50 = 0,0012 m = 1,2 mm.' },
+      { t: 'Chiziqli kengayish', q: 'Uzunligi 5 m bo‘lgan sterjen α = 0,00002 °C⁻¹. Harorat 40 °C ga oshsa, qancha uzayadi?', f: 'ΔL = α · L₀ · ΔT', a: ['0,4 mm', '4 mm', '40 mm', '0,04 mm'], c: 1, e: 'ΔL = 0,00002 × 5 × 40 = 0,004 m = 4 mm.' },
+      { t: 'Chiziqli kengayish', q: '2 m metall sterjen 3 mm ga uzaydi. Temperatura o‘zgarishi 100 °C bo‘lsa, α ni toping.', f: 'α = ΔL ÷ (L₀ · ΔT)', a: ['0,0000015 °C⁻¹', '0,000015 °C⁻¹', '0,0015 °C⁻¹', '0,015 °C⁻¹'], c: 1, e: 'α = 0,003 ÷ (2 × 100) = 0,000015 °C⁻¹.' },
+      { t: 'Chiziqli kengayish', q: 'Uzunligi 10 m bo‘lgan rels α = 0,000011 °C⁻¹. Harorat 30 °C ga oshdi. Uzayish qancha?', f: 'ΔL = α · L₀ · ΔT', a: ['0,33 mm', '3,3 mm', '33 mm', '0,033 mm'], c: 1, e: 'ΔL = 0,000011 × 10 × 30 = 0,0033 m = 3,3 mm.' },
+      { t: 'Chiziqli kengayish', q: 'Aluminiy sim uzunligi 4 m, α = 0,000024 °C⁻¹. Harorat 25 °C ga oshsa, uzayish qancha?', f: 'ΔL = α · L₀ · ΔT', a: ['0,24 mm', '2,4 mm', '24 mm', '0,024 mm'], c: 1, e: 'ΔL = 0,000024 × 4 × 25 = 0,0024 m = 2,4 mm.' },
+      { t: 'Chiziqli kengayish', q: '5 m sterjen 2 mm ga uzaydi. α = 0,00001 °C⁻¹. Harorat necha °C ga oshgan?', f: 'ΔT = ΔL ÷ (α · L₀)', a: ['4 °C', '20 °C', '40 °C', '400 °C'], c: 2, e: 'ΔT = 0,002 ÷ (0,00001 × 5) = 40 °C.' },
+      { t: 'Chiziqli kengayish', q: 'Uzunligi 3 m bo‘lgan sterjen 60 °C ga qizdirildi va 3,6 mm uzaydi. α ni toping.', f: 'α = ΔL ÷ (L₀ · ΔT)', a: ['0,000002 °C⁻¹', '0,00002 °C⁻¹', '0,0002 °C⁻¹', '0,002 °C⁻¹'], c: 1, e: 'α = 0,0036 ÷ (3 × 60) = 0,00002 °C⁻¹.' },
+      { t: 'Chiziqli kengayish', q: 'α = 0,000012 °C⁻¹ bo‘lgan 8 m sterjen 20 °C ga qizdirildi. Yakuniy uzunligi qancha?', f: 'L = L₀ + ΔL;  ΔL = α · L₀ · ΔT', a: ['8,00192 m', '8,0192 m', '8,192 m', '8,1920 cm'], c: 0, e: 'ΔL = 0,000012 × 8 × 20 = 0,00192 m. L = 8,00192 m.' },
+      { t: 'Chiziqli kengayish', q: '4 m uzunlikdagi metall sterjen 80 °C ga qizdirilganda 4,8 mm uzaydi. α qancha?', f: 'α = ΔL ÷ (L₀ · ΔT)', a: ['0,0000015 °C⁻¹', '0,000015 °C⁻¹', '0,00015 °C⁻¹', '0,0015 °C⁻¹'], c: 1, e: 'α = 0,0048 ÷ (4 × 80) = 0,000015 °C⁻¹.' },
+      { t: 'Chiziqli kengayish', q: 'Uzunligi 12 m bo‘lgan rels α = 0,00001 °C⁻¹. Harorat 50 °C ga o‘zgarsa, uzunlik o‘zgarishi qancha?', f: 'ΔL = α · L₀ · ΔT', a: ['0,6 mm', '6 mm', '60 mm', '0,06 mm'], c: 1, e: 'ΔL = 0,00001 × 12 × 50 = 0,006 m = 6 mm.' },
+      { t: 'Chiziqli kengayish', q: '3 m sterjen 1,8 mm uzaydi. α = 0,000012 °C⁻¹. Temperatura o‘zgarishini toping.', f: 'ΔT = ΔL ÷ (α · L₀)', a: ['5 °C', '50 °C', '500 °C', '0,5 °C'], c: 1, e: 'ΔT = 0,0018 ÷ (0,000012 × 3) = 50 °C.' },
+      { t: 'Chiziqli kengayish', q: 'Uzunligi 6 m bo‘lgan sterjen α = 0,00002 °C⁻¹. Harorat 15 °C ga oshdi. Uzayish qancha?', f: 'ΔL = α · L₀ · ΔT', a: ['0,18 mm', '1,8 mm', '18 mm', '0,018 mm'], c: 1, e: 'ΔL = 0,00002 × 6 × 15 = 0,0018 m = 1,8 mm.' },
+      { t: 'Chiziqli kengayish', q: 'Metall sterjen 2,5 m dan 2,503 m ga uzaydi. Uzayish qancha millimetr?', f: 'ΔL = L − L₀', a: ['0,3 mm', '3 mm', '30 mm', '300 mm'], c: 1, e: '2,503 − 2,5 = 0,003 m = 3 mm.' },
+      { t: 'Chiziqli kengayish', q: 'Uzunligi 2 m bo‘lgan sim α = 0,000017 °C⁻¹. Harorat 100 °C ga oshdi. Uzayish qancha?', f: 'ΔL = α · L₀ · ΔT', a: ['0,34 mm', '3,4 mm', '34 mm', '0,034 mm'], c: 1, e: 'ΔL = 0,000017 × 2 × 100 = 0,0034 m = 3,4 mm.' },
+      { t: 'Chiziqli kengayish', q: '6 m sterjen α = 0,000015 °C⁻¹. U 4,5 mm ga uzaydi. Harorat qancha o‘zgargan?', f: 'ΔT = ΔL ÷ (α · L₀)', a: ['5 °C', '25 °C', '50 °C', '500 °C'], c: 2, e: 'ΔT = 0,0045 ÷ (0,000015 × 6) = 50 °C.' }
+    ];
+    const screens = ['home', 'modes', 'quiz', 'result'];
+    let mode = 'all', questions = [], index = 0, score = 0, correct = 0, answered = false, lastMode = 'all';
+    let timerInterval = null, timeLeft = 20, soundOn = true, teamScores = [0, 0], teamNames = ['1-jamoa', '2-jamoa'], teamAnswers = [null, null], teamRoundDone = false;
+    const $ = id => document.getElementById(id);
+    function show(name) { screens.forEach(s => $(s).classList.toggle('active', s === name)); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+    function shuffle(arr) { return [...arr].sort(() => Math.random() - .5) }
+    function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null } }
+    function playTone(freq = 660, duration = .12) { if (!soundOn) return; try { const C = window.AudioContext || window.webkitAudioContext; const ctx = new C(); const osc = ctx.createOscillator(), gain = ctx.createGain(); osc.frequency.value = freq; osc.type = 'sine'; gain.gain.setValueAtTime(.08, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + duration); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + duration); osc.onended = () => ctx.close() } catch (e) { } }
+    $('startBtn').onclick = () => show('modes'); $('backHome').onclick = () => show('home'); $('quitBtn').onclick = () => { stopTimer(); show('modes') }; $('modesBtn').onclick = () => show('modes'); $('retryBtn').onclick = () => startGame(lastMode);
+    $('soundBtn').onclick = () => { soundOn = !soundOn; $('soundBtn').textContent = soundOn ? '🔊 Ovoz: ON' : '🔇 Ovoz: OFF'; $('soundBtn').setAttribute('aria-pressed', String(soundOn)); if (soundOn) playTone(700) };
+    document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => startGame(b.dataset.mode)));
+    function startGame(m) {
+      mode = m; lastMode = m; index = 0; score = 0; correct = 0; answered = false; teamScores = [0, 0]; teamAnswers = [null, null]; teamRoundDone = false;
+      if (m === 'team') { teamNames[0] = (prompt('1-jamoa nomini kiriting:', 'Ko‘k yulduzlar') || '1-jamoa').trim() || '1-jamoa'; teamNames[1] = (prompt('2-jamoa nomini kiriting:', 'Olov jamoasi') || '2-jamoa').trim() || '2-jamoa'; questions = shuffle([...theory, ...heat]).slice(0, 20) }
+      else questions = shuffle(m === 'heat' ? heat : m === 'all' ? theory : [...theory, ...heat]).map(q => ({ ...q }));
+      $('modeLabel').textContent = m === 'heat' ? 'ISSIQLIK USTASI' : m === 'mix' ? 'EKSTREMAL ARALASHMA' : m === 'team' ? 'JAMOAVIY DUEL' : 'BILIM PORTALI';
+      $('teamBar').classList.toggle('hidden', m !== 'team'); $('teamResult').classList.add('hidden'); show('quiz'); renderQuestion()
+    }
+    function makeAnswerButtons(targetId, q, teamIndex = null, options = null) { const target = $(targetId); target.innerHTML = ''; (options || shuffle(q.a.map((text, i) => ({ text, original: i })))).forEach((o, i) => { const btn = document.createElement('button'); btn.className = 'answer-btn'; const letter = document.createElement('span'); letter.className = 'answer-letter'; letter.textContent = 'ABCD'[i]; const label = document.createElement('span'); label.textContent = o.text; btn.append(letter, label); btn.addEventListener('click', () => teamIndex === null ? chooseAnswer(btn, o.original, q) : chooseTeamAnswer(teamIndex, o.original, q, btn)); target.appendChild(btn) }) }
+    function renderQuestion() {
+      stopTimer(); answered = false; teamAnswers = [null, null]; teamRoundDone = false; const q = questions[index]; $('topicChip').textContent = q.t.toUpperCase(); $('questionText').textContent = q.q; $('formulaBox').textContent = q.f || ''; $('formulaBox').classList.toggle('hidden', !q.f); $('feedback').className = 'feedback hidden'; $('feedback').textContent = ''; $('nextBtn').disabled = true; $('nextBtn').innerHTML = index === questions.length - 1 ? 'NATIJANI KO‘RISH <span>↗</span>' : 'KEYINGI SAVOL <span>→</span>'; $('questionCount').textContent = `SAVOL ${index + 1} / ${questions.length}`; $('percent').textContent = `${Math.round(index / questions.length * 100)}%`; $('progressBar').style.width = `${index / questions.length * 100}%`; $('score').textContent = score; $('correctCount').textContent = correct; $('remainingCount').textContent = questions.length - index - 1; $('sideMessage').textContent = mode === 'heat' ? 'Formulani tanla, qiymatlarni qo‘y va birliklarni tekshir.' : mode === 'team' ? 'Ikkala jamoa ham bir xil savolga javob beradi. Har bir jamoa o‘z ustunidan bittadan javob tanlasin.' : 'Har bir to‘g‘ri javob seni yangi bosqichga olib chiqadi.';
+      $('answers').classList.toggle('hidden', mode === 'team'); $('teamDuel').classList.toggle('hidden', mode !== 'team'); $('feedback').classList.toggle('hidden', mode === 'team');
+      if (mode === 'team') { $('teamTurn').textContent = '⚔️ IKKALA JAMOA BIR VAQTDA'; $('team1Score').textContent = teamScores[0]; $('team2Score').textContent = teamScores[1]; $('duelName0').textContent = '🔵 ' + teamNames[0]; $('duelName1').textContent = '🟠 ' + teamNames[1];[0, 1].forEach(i => { $('duelStatus' + i).textContent = 'Javob tanlang'; $('duelFeedback' + i).textContent = ''; $('duelFeedback' + i).className = 'duel-feedback' }); const options = shuffle(q.a.map((text, i) => ({ text, original: i }))); makeAnswerButtons('duelAnswers0', q, 0, options); makeAnswerButtons('duelAnswers1', q, 1, options) } else { makeAnswerButtons('answers', q) }
+      timeLeft = mode === 'team' ? 30 : mode === 'heat' ? 45 : 30; $('timer').textContent = timeLeft; $('timer').parentElement.classList.remove('urgent'); timerInterval = setInterval(() => { timeLeft--; $('timer').textContent = timeLeft; if (timeLeft <= 5) $('timer').parentElement.classList.add('urgent'); if (timeLeft <= 0) { stopTimer(); if (mode === 'team') { if (!teamRoundDone) { if (teamAnswers[0] === null) teamAnswers[0] = -1; if (teamAnswers[1] === null) teamAnswers[1] = -1; finishTeamRound(q, true) } } else if (!answered) timeoutQuestion(q) } }, 1000)
+    }
+    function markAnswer(q, choice, expired = false) {
+      if (answered) return; answered = true; stopTimer(); document.querySelectorAll('#answers .answer-btn').forEach(b => b.disabled = true); const buttons = [...document.querySelectorAll('#answers .answer-btn')]; buttons.forEach(b => { if (b.querySelector('span:last-child').textContent === q.a[q.c]) b.classList.add('correct') }); const isRight = choice === q.c; if (isRight) { correct++; score += 10; playTone(880) } else playTone(240, .2);
+      if (expired) { $('feedback').className = 'feedback bad'; $('feedback').innerHTML = '⌛ <b>Vaqt tugadi!</b> ' + q.e } else if (isRight) { $('feedback').className = 'feedback'; $('feedback').innerHTML = '✓ <b>To‘g‘ri!</b> ' + q.e } else { $('feedback').className = 'feedback bad'; $('feedback').innerHTML = '↗ <b>Yechimni o‘rgan:</b> ' + q.e }
+      $('score').textContent = score; $('correctCount').textContent = correct; $('remainingCount').textContent = questions.length - index - 1; $('nextBtn').disabled = false; $('percent').textContent = `${Math.round((index + 1) / questions.length * 100)}%`; $('progressBar').style.width = `${(index + 1) / questions.length * 100}%`
+    }
+    function chooseAnswer(btn, choice, q) { if (answered) return; markAnswer(q, choice, false); if (choice !== q.c) btn.classList.add('wrong') }
+    function chooseTeamAnswer(teamIndex, choice, q, btn) { if (teamAnswers[teamIndex] !== null || teamRoundDone) return; teamAnswers[teamIndex] = choice; const answerBox = $('duelAnswers' + teamIndex); answerBox.querySelectorAll('.answer-btn').forEach(b => b.disabled = true); if (choice === q.c) { teamScores[teamIndex] += 10; correct++; score += 10; playTone(880) } else { playTone(240, .2); btn.classList.add('wrong') } $('duelStatus' + teamIndex).textContent = choice === q.c ? 'Javob qabul qilindi ✓' : 'Javob qabul qilindi'; $('team1Score').textContent = teamScores[0]; $('team2Score').textContent = teamScores[1]; $('score').textContent = score; $('correctCount').textContent = correct; if (teamAnswers.every(a => a !== null)) finishTeamRound(q, false) }
+    function finishTeamRound(q, expired) { if (teamRoundDone) return; teamRoundDone = true; stopTimer();[0, 1].forEach(i => { const box = $('duelAnswers' + i); box.querySelectorAll('.answer-btn').forEach(b => { b.disabled = true; if (b.querySelector('span:last-child').textContent === q.a[q.c]) b.classList.add('correct') }); const choice = teamAnswers[i]; $('duelStatus' + i).textContent = choice === null || choice === -1 ? 'Vaqt tugadi — javob berilmadi' : choice === q.c ? 'To‘g‘ri javob! +10 XP' : 'Noto‘g‘ri javob'; $('duelFeedback' + i).textContent = (choice === q.c ? '✅ To‘g‘ri. ' : '❌ To‘g‘ri javob: ' + q.a[q.c] + '. ') + q.e; $('duelFeedback' + i).className = 'duel-feedback' + (choice === q.c ? '' : ' bad') }); $('nextBtn').disabled = false; $('percent').textContent = `${Math.round((index + 1) / questions.length * 100)}%`; $('progressBar').style.width = `${(index + 1) / questions.length * 100}%`; $('remainingCount').textContent = questions.length - index - 1; $('score').textContent = score; $('correctCount').textContent = correct }
+    function timeoutQuestion(q) { markAnswer(q, -1, true) }
+    $('nextBtn').onclick = () => { if (mode === 'team' ? !teamRoundDone : !answered) return; if (index < questions.length - 1) { index++; renderQuestion() } else finishGame() };
+    function finishGame() {
+      stopTimer(); show('result'); const pct = Math.round(correct / (questions.length * (mode === 'team' ? 2 : 1)) * 100); $('finalCorrect').textContent = `${correct}/${questions.length * (mode === 'team' ? 2 : 1)}`; $('finalPercent').textContent = `${pct}%`; $('finalXP').textContent = score; $('resultTitle').textContent = pct >= 90 ? 'Fizika dahosi!' : pct >= 70 ? 'Zo‘r natija!' : pct >= 45 ? 'Yaxshi urinish!' : 'Tadqiqot davom etadi!'; $('resultText').textContent = pct >= 90 ? 'Sen zarrachalar olamini juda yaxshi tushunasan. Laboratoriya seni tan oldi!' : pct >= 70 ? 'Ajoyib! Yana biroz mashq qilsang, eng yuqori darajaga chiqasan.' : pct >= 45 ? 'Asosiy tushunchalar shakllanmoqda. Izohlarni ko‘rib, yana urinib ko‘r!' : 'Xato qilish — o‘rganishning bir qismi. Mavzularni qayta ko‘rib, yana sinab ko‘r!';
+      if (mode === 'team') { $('teamResult').classList.remove('hidden'); const winner = teamScores[0] === teamScores[1] ? '🤝 DURANG!' : teamScores[0] > teamScores[1] ? `🏆 G‘OLIB: ${teamNames[0]}` : `🏆 G‘OLIB: ${teamNames[1]}`; $('teamResult').textContent = `${winner} — ${teamScores[0]} : ${teamScores[1]}` } else $('teamResult').classList.add('hidden');
+      saveLeaderboard(pct); renderLeaderboard()
+    }
+    function saveLeaderboard(pct) { let name; if (mode === 'team') name = `${teamNames[0]} vs ${teamNames[1]} (${teamScores[0]}:${teamScores[1]})`; else name = (prompt('Reytingga ismingizni kiriting:', 'Fizika ustasi') || 'Fizika ustasi').trim().slice(0, 32); let board = []; try { board = JSON.parse(localStorage.getItem('issiqLabLeaderboard') || '[]') } catch (e) { } board.push({ name, score, percent: pct, date: new Date().toLocaleDateString('uz-UZ') }); board.sort((a, b) => b.score - a.score || b.percent - a.percent); localStorage.setItem('issiqLabLeaderboard', JSON.stringify(board.slice(0, 5))) }
+    function renderLeaderboard() { let board = []; try { board = JSON.parse(localStorage.getItem('issiqLabLeaderboard') || '[]') } catch (e) { } const list = $('leaderboardList'); list.innerHTML = ''; if (!board.length) { const li = document.createElement('li'); li.textContent = 'Hozircha natija yo‘q — birinchi bo‘lib rekord o‘rnat!'; list.appendChild(li); return } board.forEach(item => { const li = document.createElement('li'); li.textContent = `${item.name} — ${item.score} XP · ${item.percent}% · ${item.date}`; list.appendChild(li) }) }
 
   </script>
 </body>
+
 </html>
