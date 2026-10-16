@@ -1319,6 +1319,128 @@
         padding: 14px
       }
     }
+
+
+    /* Chempionat rejimi */
+    .tournament-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      margin: 18px 0
+    }
+
+    .tournament-form input {
+      width: 100%;
+      min-width: 0;
+      background: #10192a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      color: var(--white);
+      font: inherit
+    }
+
+    .tournament-list,
+    .bracket-list {
+      padding: 16px;
+      background: #111a2b;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin: 14px 0
+    }
+
+    .tournament-list ol {
+      margin: 0;
+      padding-left: 24px;
+      line-height: 1.9;
+      color: #dce5fa
+    }
+
+    .tournament-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px
+    }
+
+    .tournament-duel {
+      border: 1px solid #72efbd55;
+      background: #111a2b;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 20px
+    }
+
+    .tournament-players {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 14px 0
+    }
+
+    .tournament-player {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow-wrap: anywhere
+    }
+
+    .tournament-player:first-child {
+      border-color: #68e0ff66;
+      color: var(--blue)
+    }
+
+    .tournament-player:last-child {
+      border-color: #ff9d6266;
+      color: var(--orange)
+    }
+
+    .tournament-question {
+      font-size: clamp(19px, 3vw, 27px);
+      line-height: 1.4;
+      margin: 20px 0
+    }
+
+    .tournament-answers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px
+    }
+
+    .tournament-answers button {
+      background: #111a2b;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--white);
+      padding: 13px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit
+    }
+
+    .tournament-answers button:hover {
+      border-color: var(--blue)
+    }
+
+    .tournament-message {
+      margin-top: 14px;
+      font-weight: 800;
+      line-height: 1.7
+    }
+
+    @media(max-width:520px) {
+      .tournament-form {
+        grid-template-columns: 1fr
+      }
+
+      .tournament-players {
+        grid-template-columns: 1fr
+      }
+
+      .tournament-answers {
+        grid-template-columns: 1fr
+      }
+    }
   </style>
 </head>
 
@@ -1393,9 +1515,57 @@
           <p>Ikkala jamoa bir ekranda, bir xil savolga javob beradi. Har ikkala jamoa har raundda teng imkoniyatga ega!
           </p><span class="mode-bottom">2 JAMOA • 30 SONIYA <b>→</b></span>
         </button>
+        <button class="mode-card mode-green" id="openTournament"><span class="mode-number">05</span><span
+            class="mode-emoji">🥇</span>
+          <h3>Chempionat</h3>
+          <p>Ishtirokchilarni kiriting, avtomatik juftlang va bir savolli duellarda chempionni aniqlang.</p><span
+            class="mode-bottom">TURNIR • FINAL <b>→</b></span>
+        </button>
       </div>
       <div class="tip-box"><span>💡</span>
         <p><b>Laboratoriya qoidasi:</b> javobni tanlagach, izohni o‘qi. Har bir xato — yangi kashfiyot!</p>
+      </div>
+    </section>
+
+    <section id="tournament" class="screen">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">🏆 CHEMPIONAT REJIMI</div>
+          <h2>Fizika chempionini aniqlaymiz</h2>
+        </div><button class="ghost-btn" id="tournamentBack">← Rejimlar</button>
+      </div>
+      <p class="hero-text">Ishtirokchilar ismini kiriting. Har bir duelda bitta savol beriladi. Kim birinchi bo‘lib
+        to‘g‘ri javobni belgilasa, keyingi bosqichga o‘tadi.</p>
+      <div class="tournament-form"><input id="playerInput" maxlength="45" placeholder="Ism va familiya kiriting..."
+          autocomplete="off"><button class="primary-btn" id="addPlayer">+ QO‘SHISH</button></div>
+      <div class="tournament-list">
+        <h3>👥 ISHTIROKCHILAR (<span id="playerCount">0</span>)</h3>
+        <ol id="playerList">
+          <li>Hozircha ishtirokchi yo‘q.</li>
+        </ol>
+      </div>
+      <div class="tournament-actions"><button class="primary-btn" id="createTournament">JUFTLASH VA TURNIRNI BOSHLASH
+          ↗</button><button class="ghost-btn" id="clearPlayers">RO‘YXATNI TOZALASH</button></div>
+      <div id="tournamentGame" class="tournament-duel hidden">
+        <div class="eyebrow" id="tournamentRound">1-BOSQICH</div>
+        <h2 id="tournamentMatchTitle">Duel</h2>
+        <div class="tournament-players">
+          <div class="tournament-player">🔵 <b id="tournamentP1">—</b></div>
+          <div class="tournament-player">🟠 <b id="tournamentP2">—</b></div>
+        </div>
+        <button class="primary-btn" id="startTournamentDuel">⚔️ DUELNI BOSHLASH</button>
+        <div id="tournamentQuestionArea" class="hidden">
+          <div class="topic-chip" id="tournamentTopic"></div>
+          <h3 class="tournament-question" id="tournamentQuestion"></h3>
+          <div class="tournament-answers" id="tournamentAnswers"></div>
+          <div class="tournament-message" id="tournamentMessage" aria-live="polite"></div>
+        </div>
+        <div class="tournament-actions"><button class="primary-btn hidden" id="nextTournamentDuel">KEYINGI DUEL
+            →</button></div>
+      </div>
+      <div id="tournamentBracket" class="bracket-list hidden">
+        <h3>📊 TURNIR NATIJALARI</h3>
+        <ol id="bracketList"></ol>
       </div>
     </section>
 
@@ -1534,7 +1704,7 @@
       { t: 'Chiziqli kengayish', q: 'Uzunligi 2 m bo‘lgan sim α = 0,000017 °C⁻¹. Harorat 100 °C ga oshdi. Uzayish qancha?', f: 'ΔL = α · L₀ · ΔT', a: ['0,34 mm', '3,4 mm', '34 mm', '0,034 mm'], c: 1, e: 'ΔL = 0,000017 × 2 × 100 = 0,0034 m = 3,4 mm.' },
       { t: 'Chiziqli kengayish', q: '6 m sterjen α = 0,000015 °C⁻¹. U 4,5 mm ga uzaydi. Harorat qancha o‘zgargan?', f: 'ΔT = ΔL ÷ (α · L₀)', a: ['5 °C', '25 °C', '50 °C', '500 °C'], c: 2, e: 'ΔT = 0,0045 ÷ (0,000015 × 6) = 50 °C.' }
     ];
-    const screens = ['home', 'modes', 'quiz', 'result'];
+    const screens = ['home', 'modes', 'tournament', 'quiz', 'result'];
     let mode = 'all', questions = [], index = 0, score = 0, correct = 0, answered = false, lastMode = 'all';
     let timerInterval = null, timeLeft = 20, soundOn = true, teamScores = [0, 0], teamNames = ['1-jamoa', '2-jamoa'], teamAnswers = [null, null], teamRoundDone = false;
     const $ = id => document.getElementById(id);
@@ -1576,6 +1746,116 @@
     }
     function saveLeaderboard(pct) { let name; if (mode === 'team') name = `${teamNames[0]} vs ${teamNames[1]} (${teamScores[0]}:${teamScores[1]})`; else name = (prompt('Reytingga ismingizni kiriting:', 'Fizika ustasi') || 'Fizika ustasi').trim().slice(0, 32); let board = []; try { board = JSON.parse(localStorage.getItem('issiqLabLeaderboard') || '[]') } catch (e) { } board.push({ name, score, percent: pct, date: new Date().toLocaleDateString('uz-UZ') }); board.sort((a, b) => b.score - a.score || b.percent - a.percent); localStorage.setItem('issiqLabLeaderboard', JSON.stringify(board.slice(0, 5))) }
     function renderLeaderboard() { let board = []; try { board = JSON.parse(localStorage.getItem('issiqLabLeaderboard') || '[]') } catch (e) { } const list = $('leaderboardList'); list.innerHTML = ''; if (!board.length) { const li = document.createElement('li'); li.textContent = 'Hozircha natija yo‘q — birinchi bo‘lib rekord o‘rnat!'; list.appendChild(li); return } board.forEach(item => { const li = document.createElement('li'); li.textContent = `${item.name} — ${item.score} XP · ${item.percent}% · ${item.date}`; list.appendChild(li) }) }
+
+
+    // CHEMPIONAT: ismlar, avtomatik juftlash va bir savolli duel
+    let tournamentPlayers = [], tournamentRounds = [], tournamentRoundIndex = 0, tournamentMatchIndex = 0;
+    let tournamentActive = false, tournamentAnswered = false, tournamentCurrentQuestion = null, tournamentWinner = null;
+    $('openTournament').onclick = () => { show('tournament'); renderPlayers() };
+    $('tournamentBack').onclick = () => show('modes');
+    $('addPlayer').onclick = addTournamentPlayer;
+    $('playerInput').addEventListener('keydown', e => { if (e.key === 'Enter') addTournamentPlayer() });
+    $('clearPlayers').onclick = () => { tournamentPlayers = []; tournamentRounds = []; $('tournamentGame').classList.add('hidden'); $('tournamentBracket').classList.add('hidden'); renderPlayers() };
+    function addTournamentPlayer() {
+      const input = $('playerInput'), name = input.value.trim();
+      if (!name) { input.focus(); return }
+      if (tournamentPlayers.some(p => p.toLocaleLowerCase() === name.toLocaleLowerCase())) { alert('Bu ishtirokchi ro‘yxatda bor.'); return }
+      tournamentPlayers.push(name); input.value = ''; renderPlayers(); input.focus();
+    }
+    function renderPlayers() {
+      $('playerCount').textContent = tournamentPlayers.length;
+      const list = $('playerList'); list.innerHTML = '';
+      if (!tournamentPlayers.length) { const li = document.createElement('li'); li.textContent = 'Hozircha ishtirokchi yo‘q.'; list.appendChild(li); return }
+      tournamentPlayers.forEach((p, i) => { const li = document.createElement('li'); li.textContent = `${i + 1}. ${p}`; list.appendChild(li) });
+    }
+    function createTournament() {
+      if (tournamentPlayers.length < 2) { alert('Chempionat uchun kamida 2 nafar ishtirokchi kiriting.'); return }
+      let entrants = shuffle([...tournamentPlayers]);
+      tournamentRounds = []; tournamentRoundIndex = 0; tournamentMatchIndex = 0;
+      // Juft bo‘lmagan son bo‘lsa, bitta ishtirokchi avtomatik keyingi bosqichga o‘tadi.
+      while (entrants.length > 1) {
+        const matches = []; let next = [];
+        if (entrants.length % 2 === 1) { const bye = entrants.pop(); matches.push({ p1: bye, p2: null, bye: true, winner: bye }); next.push(bye) }
+        for (let i = 0; i < entrants.length; i += 2)matches.push({ p1: entrants[i], p2: entrants[i + 1], winner: null, bye: false });
+        tournamentRounds.push(matches); entrants = next;
+        // keyingi g‘oliblar keyingi bosqichda hisoblanadi; shu sababli raundlar bosqichma-bosqich tuziladi
+        break;
+      }
+      if (!tournamentRounds.length) { return }
+      $('tournamentGame').classList.remove('hidden'); $('tournamentBracket').classList.remove('hidden');
+      $('tournamentMessage').textContent = ''; $('tournamentQuestionArea').classList.add('hidden'); $('nextTournamentDuel').classList.add('hidden');
+      renderBracket(); loadTournamentMatch();
+    }
+    $('createTournament').onclick = createTournament;
+    function renderBracket() {
+      const list = $('bracketList'); list.innerHTML = '';
+      tournamentRounds.forEach((round, ri) => round.forEach((m, mi) => {
+        const li = document.createElement('li');
+        li.textContent = `${ri + 1}-bosqich, duel ${mi + 1}: ${m.p1} ${m.p2 ? 'vs ' + m.p2 : '— avtomatik keyingi bosqich'}${m.winner ? ' | G‘olib: ' + m.winner : ''}`;
+        list.appendChild(li);
+      }));
+    }
+    function loadTournamentMatch() {
+      const round = tournamentRounds[tournamentRoundIndex];
+      if (!round) { finishTournament(); return }
+      if (tournamentMatchIndex >= round.length) {
+        const winners = round.map(m => m.winner).filter(Boolean);
+        if (winners.length <= 1) { finishTournament(winners[0]); return }
+        let nextRound = []; let pool = shuffle(winners);
+        if (pool.length % 2 === 1) { const bye = pool.pop(); nextRound.push({ p1: bye, p2: null, winner: bye, bye: true }) }
+        for (let i = 0; i < pool.length; i += 2)nextRound.push({ p1: pool[i], p2: pool[i + 1], winner: null, bye: false });
+        tournamentRounds.push(nextRound); tournamentRoundIndex++; tournamentMatchIndex = 0; renderBracket();
+        $('tournamentMessage').textContent = 'Keyingi bosqich tayyor!';
+        return loadTournamentMatch();
+      }
+      const m = round[tournamentMatchIndex];
+      if (m.bye) { tournamentMatchIndex++; renderBracket(); return loadTournamentMatch() }
+      $('tournamentRound').textContent = `${tournamentRoundIndex + 1}-BOSQICH`;
+      $('tournamentMatchTitle').textContent = `Duel ${tournamentMatchIndex + 1} / ${round.length}`;
+      $('tournamentP1').textContent = m.p1; $('tournamentP2').textContent = m.p2;
+      $('tournamentQuestionArea').classList.add('hidden'); $('startTournamentDuel').classList.remove('hidden');
+      $('nextTournamentDuel').classList.add('hidden'); $('tournamentMessage').textContent = 'Duelni boshlash tugmasini bosing.';
+      tournamentActive = false; tournamentAnswered = false;
+    }
+    $('startTournamentDuel').onclick = () => {
+      if (tournamentActive) return;
+      const m = tournamentRounds[tournamentRoundIndex][tournamentMatchIndex];
+      tournamentCurrentQuestion = shuffle([...theory, ...heat])[0];
+      tournamentActive = true; tournamentAnswered = false;
+      $('startTournamentDuel').classList.add('hidden'); $('tournamentQuestionArea').classList.remove('hidden');
+      $('tournamentTopic').textContent = tournamentCurrentQuestion.t.toUpperCase();
+      $('tournamentQuestion').textContent = tournamentCurrentQuestion.q;
+      $('tournamentMessage').textContent = 'Ikki ishtirokchi navbat bilan o‘z nomi ostidagi javobni tanlasin. Birinchi to‘g‘ri javob g‘olib!';
+      const box = $('tournamentAnswers'); box.innerHTML = '';
+      // Har bir variant uchun ikki tugma: ishtirokchi kimligini tanlab, javob beradi.
+      shuffle(tournamentCurrentQuestion.a.map((a, i) => ({ a, i }))).forEach(opt => {
+        [m.p1, m.p2].forEach((player, pi) => {
+          const b = document.createElement('button');
+          b.textContent = `${pi === 0 ? '🔵' : '🟠'} ${player}: ${opt.a}`;
+          b.onclick = () => answerTournament(pi, opt.i);
+          box.appendChild(b);
+        });
+      });
+    };
+    function answerTournament(playerIndex, choice) {
+      if (!tournamentActive || tournamentAnswered) return;
+      if (choice !== tournamentCurrentQuestion.c) {
+        $('tournamentMessage').textContent = `❌ ${playerIndex === 0 ? tournamentRounds[tournamentRoundIndex][tournamentMatchIndex].p1 : tournamentRounds[tournamentRoundIndex][tournamentMatchIndex].p2} — noto‘g‘ri javob. Yana urinib ko‘ring.`;
+        return;
+      }
+      tournamentAnswered = true; tournamentActive = false;
+      const m = tournamentRounds[tournamentRoundIndex][tournamentMatchIndex];
+      m.winner = playerIndex === 0 ? m.p1 : m.p2;
+      $('tournamentMessage').textContent = `🏆 ${m.winner} — DUEL G‘OLIBI! Keyingi bosqichga o‘tdi.`;
+      $('tournamentAnswers').querySelectorAll('button').forEach(b => b.disabled = true);
+      $('nextTournamentDuel').classList.remove('hidden'); renderBracket();
+    }
+    $('nextTournamentDuel').onclick = () => { tournamentMatchIndex++; loadTournamentMatch() };
+    function finishTournament(winner) {
+      $('tournamentQuestionArea').classList.add('hidden'); $('startTournamentDuel').classList.add('hidden'); $('nextTournamentDuel').classList.add('hidden');
+      $('tournamentMessage').textContent = winner ? `🥇 CHEMPION: ${winner}!` : 'Chempionat yakunlandi!';
+      renderBracket();
+    }
 
   </script>
 </body>
